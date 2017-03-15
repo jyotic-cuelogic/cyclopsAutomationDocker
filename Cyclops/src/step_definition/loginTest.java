@@ -1,49 +1,80 @@
 package step_definition;
 
+import static org.testng.Assert.assertTrue;
+
 import java.util.concurrent.TimeUnit;
-import pageObjects.homePage;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import Utilities.*;
 
 public class loginTest {
 	private static WebDriver driver = null;
-	
-	
-	@Given("^I have the permission to Cyclops as an Agent through Phalanx$")
-	public void valid_agent_id() throws Throwable {
-		driver = new PhantomJSDriver();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		
+	@Given("^I have the permission to Cyclops as an Agent through Phalanx$")
+	public void valid_agent_id() throws Exception
+	{
+		try
+		{
+			driver = new PhantomJSDriver();
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			String url = settings.cyclops_url();
+			driver.get(url);
+		}
+		catch (Exception e)
+		{
+			throw e;
+		}
 	}
 
 	@When("^I navigate to cyclops' login url$")
-	public void login_url() throws Throwable {
-	    driver.get("https://{cyclops-staging-url}/?vocalcomid={vocalcomid}&did={did}&ani={ani}&indexid={indexid}");
-	    if(driver.findElement(By.id("call_call_disposition_id")) != null)
-	    {
-	    	driver.findElement(By.id("call_call_disposition_id")).click();
-	    	
-	    }
+	public void login_url() throws Exception 
+	{
+		try
+		{
+			if(pageObjects.callDisposition.fcd_text(driver).isDisplayed())
+			{
+				pageObjects.callDisposition.call_dispose_slider(driver).click();
+		    	pageObjects.callDisposition.call_dispose_option(driver).click();
+		    	pageObjects.callDisposition.apply_button(driver).click();
+		    	System.out.println("Forced Call Disposition value set");
+		    }
+		    else
+		    {
+		    	System.out.println("Forced Call Disposition page not found");
+		    }
+		}
+		catch (Exception e)
+		{
+			throw e;
+		}
 	}
 
 	@Then("^I should be able to view Cyclops' Home Page$")
-	public void cyclops_home() throws Throwable {
-//	    String agent_info = pageObjects.homePage.agent_id().getText();
-		WebElement element = driver.findElement(By.id("search-hotels"));
-	    String hotel_button = element.getText();
-		System.out.println(hotel_button);
-	    if(hotel_button == "SEARCH HOTELS")
-	    {
-	    	System.out.println("Test Case has passed");
-	    }
-	    
+	public void cyclops_home() throws Exception
+	{
+		try
+		{
+			Thread.sleep(10000);
+			if(pageObjects.homePage.img_map(driver).isDisplayed())
+		    {
+		    	System.out.println("Test Case has passed");
+		    }
+		    else
+		    {
+		    	System.out.println("Test Case has failed");
+		    }
+			
+//			assertTrue(driver.getTitle().contains("Cyclops - Home"));
+		}
+		catch (Exception e)
+		{
+			throw e;
+		}
+		
 	}
-
 }
