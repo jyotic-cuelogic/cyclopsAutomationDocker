@@ -1,7 +1,5 @@
 package step_definition;
 
-import static org.testng.Assert.assertTrue;
-
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -60,7 +58,7 @@ public class loginTest {
 		try
 		{
 			Thread.sleep(10000);
-			if(pageObjects.homePage.img_map(driver).isDisplayed())
+			if(pageObjects.homePage.txt_breadcrumb(driver).isDisplayed())
 		    {
 		    	System.out.println("Test Case has passed");
 		    }
@@ -68,13 +66,13 @@ public class loginTest {
 		    {
 		    	System.out.println("Test Case has failed");
 		    }
-			
-//			assertTrue(driver.getTitle().contains("Cyclops - Home"));
+			driver.quit();
 		}
 		catch (Exception e)
 		{
 			throw e;
-		}
-		
+		}	
 	}
+	
+	
 }

@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class homePage{
 	public homePage(){
@@ -10,8 +11,9 @@ public class homePage{
 	}
 	
 	private static WebElement element = null;
+	private static Select select = null;
 	
-	public static WebElement img_map(WebDriver d1) throws Exception
+	public static WebElement txt_breadcrumb(WebDriver d1) throws Exception
 	{
 		try
 		{
@@ -26,11 +28,12 @@ public class homePage{
 		return element;
 	}
 	
-	public static WebElement drp_country(WebDriver d1) throws Exception
+	public static Select drp_country(WebDriver d1) throws Exception
 	{
 		try
 		{
-			element = d1.findElement(By.name("country"));
+			element = d1.findElement(By.id("search_address_country"));
+			select = new Select(element);
 			System.out.println("Country dropdown found");
 		}
 		catch(Exception e)
@@ -38,7 +41,7 @@ public class homePage{
 			System.out.println("Country dropdown not found");
 			throw e;
 		}
-		return element;
+		return select;
 	}
 	
 	public static WebElement txt_address(WebDriver d1) throws Exception
@@ -71,11 +74,11 @@ public class homePage{
 		return element;
 	}
 	
-	public static WebElement drp_state(WebDriver d1) throws Exception
+	public static Select drp_state(WebDriver d1) throws Exception
 	{
 		try
 		{
-			element = d1.findElement(By.id("state_address_state"));
+			select = new Select(d1.findElement(By.id("search_address_state")));
 			System.out.println("State dropdown found");
 		}
 		catch(Exception e)
@@ -83,7 +86,7 @@ public class homePage{
 			System.out.println("Address textfield not found");
 			throw e;
 		}
-		return element;
+		return select;
 	}
 	
 	public static WebElement txt_zip(WebDriver d1) throws Exception
@@ -115,7 +118,4 @@ public class homePage{
 		}
 		return element;
 	}
-	
-	
-	
 }

@@ -11,7 +11,7 @@ public class cyclopsLogin {
 	
 	private static WebDriver driver = null;
 	
-	public void loginSetup() throws Exception
+	public WebDriver loginSetup() throws Exception
 	{
 		try
 		{
@@ -31,7 +31,7 @@ public class cyclopsLogin {
 				System.out.println("FCD page not found");
 			}
 			
-			if(homePage.img_map(driver).isDisplayed())
+			if(homePage.txt_breadcrumb(driver).isDisplayed())
 			{
 				System.out.println("Home Page is found");
 			}
@@ -45,6 +45,7 @@ public class cyclopsLogin {
 			System.out.println("Login setup script failed");
 			throw e;
 		}
+		return driver;
 	}
 	
 }

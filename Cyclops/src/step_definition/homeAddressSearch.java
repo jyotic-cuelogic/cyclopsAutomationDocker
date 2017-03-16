@@ -3,6 +3,7 @@ package step_definition;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
+import CSVRead.CSVReadHotelSearch;
 import pageObjects.cyclopsLogin;
 import pageObjects.homePage;
 import cucumber.api.java.en.Given;
@@ -13,12 +14,14 @@ public class homeAddressSearch {
 
 	private static WebDriver driver = null;
 	
+	
 	@Given("^I am logged in to Cyclops$")
 	public void cyclops_login() throws Exception {
 		try
 		{
 			cyclopsLogin cycLogin = new cyclopsLogin();
-			cycLogin.loginSetup();
+			driver = cycLogin.loginSetup();
+			
 			System.out.println("Login to Cyclops Successful");
 		}
 		catch (Exception e)
@@ -32,13 +35,13 @@ public class homeAddressSearch {
 	public void validateHomePage() throws Exception {
 		try
 		{
-			if(homePage.drp_country(driver).isDisplayed())
+			if(driver.getTitle().equals("Cyclops - Home"))
 			{
-				System.out.println("Home page found");
+				System.out.println("On Home Page");
 			}
 			else
 			{
-				System.out.println("Home page not found");
+				System.out.println("Not on Home Page");
 			}
 		}
 		catch (Exception e)
@@ -52,11 +55,9 @@ public class homeAddressSearch {
 	{
 		try
 		{
-			pageObjects.homePage.drp_country(driver).sendKeys("United States");
-			pageObjects.homePage.txt_address(driver).sendKeys("3950 S Las Vegas Blvd");
-			pageObjects.homePage.txt_city(driver).sendKeys("Las Vegas");
-			pageObjects.homePage.drp_state(driver).sendKeys("Nevada");
-			pageObjects.homePage.txt_zip(driver).sendKeys("89119");
+			homePage.drp_country(driver).selectByVisibleText("United States");;
+			CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
+			csvRead.csvDataRead(driver);
 			System.out.println("Address entered");
 		}
 		catch(Exception e)
@@ -70,7 +71,7 @@ public class homeAddressSearch {
 	public void clickSearch() throws Exception {
 		try
 		{
-			pageObjects.homePage.btn_SearchHotels(driver).click();
+			homePage.btn_SearchHotels(driver).click();
 			System.out.println("Search Hotels button clicked");
 			Thread.sleep(5000);
 		}
@@ -80,21 +81,19 @@ public class homeAddressSearch {
 			throw e;
 		}
 	}
+	
+	@When("^I enter the Search criteria for City$")
 
 	@Then("^I should navigate to the Search Results Page$")
 	public void cyclopsSearchResults() throws Exception
 	{
 		try
 		{
-			Assert.assertEquals("Cyclops - Search", driver.getTitle());
-			
+			Assert.assertTrue(driver.getTitle().equals("Cyclops - Search"));
 		}
 		catch(Exception e)
 		{
 			throw e;
 		}
-	}
-
-	
-	
+	}	
 }
