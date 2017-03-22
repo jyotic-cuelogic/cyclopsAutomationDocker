@@ -5,6 +5,7 @@ import java.sql.Driver;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.cyclopsLogin;
+import pageObjects.searchResultsPage;
 import pageObjects.searchResultsPageNavigate;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,6 +16,8 @@ public class updateSearchResults {
 
 	static driverInitialize d = new driverInitialize();
 	static WebDriver driver = d.driverInit();
+	searchResultsPage search = new searchResultsPage();
+	
 	
 	@Given("^should be navigated to the Search Results page$")
 	public void searchResultsSetup() throws Exception
@@ -37,24 +40,46 @@ public class updateSearchResults {
 	{
 		try
 		{
+			System.out.println(driver.getTitle());
 			if(driver.getTitle().equals("Cyclops - Search"))
 			{
 				System.out.println("Confirmed on Search Results Page");
 			}
+			else
+			{
+				System.out.println("Not reached Search Results Page");
+			}
 		}
 		catch(Exception e)
 		{
-			System.out.println("Not reached Search Results Page");
+			System.out.println("Unable to confirm on Search Results Page");
 			throw e;
 		}
 	}
-//
-//	@When("^I click on the Edit Dates & rooms link$")
-//	public void i_click_on_the_Edit_Dates_rooms_link() throws Throwable {
-//	    // Write code here that turns the phrase above into concrete actions
-//	    throw new PendingException();
-//	}
-//
+
+	@When("^I click on the Edit Dates & rooms link$")
+	public void edr_click() throws Exception {
+	    try
+	    {
+	    	System.out.println(search.link_editCDR(driver));
+	    	search.link_editCDR(driver).click();
+	    	System.out.println("Edit CDR link clicked on");
+	    	if(search.cal_checkIn(driver).isDisplayed())
+	    	{
+	    		System.out.println("Check In Date Calendar field is visible");
+	    	}
+	    	else
+	    	{
+	    		System.out.println("Check In Date Calendar field is not visible");
+	    	}
+	    }
+	    catch(Exception e)
+	    {
+	    	System.out.println("Click on Edit link failed");
+	    	throw e;
+	    }
+	}
+
 //	@When("^update the dates, currency and room information$")
 //	public void update_the_dates_currency_and_room_information() throws Throwable {
 //	    // Write code here that turns the phrase above into concrete actions
