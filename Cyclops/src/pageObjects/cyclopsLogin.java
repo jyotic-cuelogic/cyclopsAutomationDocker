@@ -11,9 +11,6 @@ import Utilities.settings;
 public class cyclopsLogin {
 	
 	String home_url;
-	
-
-	
 	public WebDriver loginSetup(WebDriver driver) throws Exception
 	{
 		try
@@ -57,7 +54,6 @@ public class cyclopsLogin {
 		{
 			cyclopsLogin login = new cyclopsLogin();
 			login.loginSetup(driver);
-			driver.get(home_url);
 			Thread.sleep(3000);
 		
 			if(driver.getTitle().equals("Cyclops - Home"))
