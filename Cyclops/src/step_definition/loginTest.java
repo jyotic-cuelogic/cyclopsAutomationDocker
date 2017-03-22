@@ -8,18 +8,20 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import driverInitialize.driverInitialize;
 import Utilities.*;
 
 public class loginTest {
-	private static WebDriver driver = null;
 		
+	static driverInitialize d = new driverInitialize();
+	static WebDriver driver = d.driverInit();
+	
 	@Given("^I have the permission to Cyclops as an Agent through Phalanx$")
 	public void valid_agent_id() throws Exception
 	{
 		try
 		{
-			driver = new PhantomJSDriver();
-			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			
 			String url = settings.cyclops_url();
 			driver.get(url);
 		}

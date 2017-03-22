@@ -3,20 +3,21 @@ package pageObjects;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
+import driverInitialize.driverInitialize;
+import CSVRead.CSVReadHotelSearch;
 import Utilities.settings;
 
 public class cyclopsLogin {
 	
-	private static WebDriver driver = null;
+	String home_url;
 	
-	public WebDriver loginSetup() throws Exception
+
+	
+	public WebDriver loginSetup(WebDriver driver) throws Exception
 	{
 		try
 		{
-			driver = new PhantomJSDriver();
-			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			String url = settings.cyclops_url();
 			driver.get(url);
 			if (callDisposition.fcd_text(driver).isDisplayed())
@@ -25,19 +26,21 @@ public class cyclopsLogin {
 				callDisposition.call_dispose_option(driver).click();
 				callDisposition.apply_button(driver).click();
 				System.out.println("FCD value set");
-			}
-			else
+				Thread.sleep(6000);
+				System.out.println(driver.getTitle());
+				if(driver.getTitle().equals("Cyclops - Home"))
+				{
+					home_url = driver.getCurrentUrl();
+					System.out.println("FCD Passed. Logged in & on home page with FCD");
+				}
+				else
+				{
+					System.out.println("FCD script failed");
+				}
+			}	
+			else if(homePage.txt_breadcrumb(driver).isDisplayed())
 			{
-				System.out.println("FCD page not found");
-			}
-			
-			if(homePage.txt_breadcrumb(driver).isDisplayed())
-			{
-				System.out.println("Home Page is found");
-			}
-			else
-			{
-				System.out.println("Home Page is not found");
+				System.out.println("Logged in & on home page without FCD");
 			}
 		}
 		catch (Exception e)
@@ -46,6 +49,47 @@ public class cyclopsLogin {
 			throw e;
 		}
 		return driver;
+	}
+	
+	public WebDriver searchResultsSetup(WebDriver driver) throws Exception
+	{
+		try
+		{
+			cyclopsLogin login = new cyclopsLogin();
+			login.loginSetup(driver);
+			driver.get(home_url);
+			Thread.sleep(3000);
+		
+			if(driver.getTitle().equals("Cyclops - Home"))
+			{
+				homePage.drp_country(driver).selectByVisibleText("United States");
+				CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
+				csvRead.csvDataRead(driver);
+				System.out.println("Address entered");
+				homePage.btn_SearchHotels(driver).click();
+				Thread.sleep(14000);
+				if(driver.getTitle().equals("Cyclops - Search"))
+				{
+					System.out.println("Cyclops Search Results Page is found");
+				}
+				else
+				{
+					System.out.println("Cyclops Search Results Page is not found");
+				}
+				System.out.println("Search Results Page setup done");
+			}
+			else
+			{
+				System.out.println("Home page not opened");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Search Results Page setup failed");
+			throw e;
+		}
+		return driver;
+
 	}
 	
 }

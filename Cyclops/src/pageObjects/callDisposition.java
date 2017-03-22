@@ -8,7 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
-import automationframework.AppDriver;
+import driverInitialize.driverInitialize;
+
 
 
 public class callDisposition {
@@ -18,10 +19,13 @@ public class callDisposition {
 		}
 	 private static WebElement element = null;
 	 
+	 
+	 
     public static WebElement fcd_text(WebDriver d) throws Exception
 	{
 		try
 		{	
+			
 			element = d.findElement(By.className("cd-message"));
 			System.out.println("FCD text page & text found");
 		}
@@ -53,7 +57,6 @@ public class callDisposition {
 	{
 		try
 		{
-//			driver = new PhantomJSDriver();
 			element = d.findElement(By.xpath("//*[@id='call_call_disposition_id']/optgroup[1]/option[1]"));
 			System.out.println("Call Disposition Slider option found");
 		}

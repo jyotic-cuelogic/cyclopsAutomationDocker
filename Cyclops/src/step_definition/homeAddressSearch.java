@@ -1,5 +1,7 @@
 package step_definition;
 
+import java.awt.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
@@ -9,18 +11,19 @@ import pageObjects.homePage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import driverInitialize.driverInitialize;
 
 public class homeAddressSearch {
 
-	private static WebDriver driver = null;
-	
+	static driverInitialize d = new driverInitialize();
+	static WebDriver driver = d.driverInit();
 	
 	@Given("^I am logged in to Cyclops$")
 	public void cyclops_login() throws Exception {
 		try
 		{
 			cyclopsLogin cycLogin = new cyclopsLogin();
-			driver = cycLogin.loginSetup();
+			driver = cycLogin.loginSetup(driver);
 			
 			System.out.println("Login to Cyclops Successful");
 		}
@@ -55,7 +58,7 @@ public class homeAddressSearch {
 	{
 		try
 		{
-			homePage.drp_country(driver).selectByVisibleText("United States");;
+			homePage.drp_country(driver).selectByVisibleText("United States");
 			CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
 			csvRead.csvDataRead(driver);
 			System.out.println("Address entered");
@@ -67,13 +70,89 @@ public class homeAddressSearch {
 		}
 	}
 
+	@When("^I click on the City tab$")
+	public void clickCityTab() throws Exception
+	{
+		try
+		{
+			homePage.tab_city(driver).click();
+			System.out.println("City tab clicked on & Active");
+		}
+		catch (Exception e)
+		{
+			System.out.println("City tab not clicked on");
+		}
+	}
+	
+	@When("^enter the city search values$")
+	public void fillCity() throws Exception
+	{
+		try
+		{
+			System.out.println(driver.getTitle());
+			homePage.drp_country_city(driver).selectByVisibleText("United States");
+			System.out.println("reached here - country selected");
+			homePage.drp_state_City(driver).selectByVisibleText("Nevada");
+			System.out.println("reached here - state selected");
+			homePage.txt_city_city(driver).clear();
+			System.out.println("reached here - city selected");
+			homePage.txt_city_city(driver).sendKeys("las vegas");
+			System.out.println("City values filled");
+		}
+		catch (Exception e)
+		{
+			System.out.println("City values not filled");
+			throw e;
+		}
+	}
+	
+	@When("^I click on the Landmark tab$")
+	public void clickLandmarkTab() throws Exception
+	{
+		try
+		{
+			homePage.tab_landmark(driver).click();
+			System.out.println("Landmark tab clicked and active");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Landmark tab not clicked");
+			throw e;
+		}
+	}
+	
+	@When("^enter the landmark search values$")
+	public void fillLandmark() throws Exception
+	{
+		try
+		{
+			homePage.drp_country_landmark(driver).selectByVisibleText("United States");
+			homePage.drp_state_landmark(driver).selectByValue("NV");
+			homePage.txt_city_landmark(driver).sendKeys("las vegas");
+			if(homePage.drp_landmark(driver).isMultiple())
+			{
+				homePage.drp_landmark(driver).selectByIndex(1);
+				System.out.println("Landmark value selected");
+			}
+			else
+			{
+				System.out.println("Landmarks not present for the selected City value");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Landmark value not filled");
+			throw e;
+		}
+	}
+	
 	@When("^click on Search Hotel button$")
 	public void clickSearch() throws Exception {
 		try
 		{
 			homePage.btn_SearchHotels(driver).click();
+			Thread.sleep(14000);
 			System.out.println("Search Hotels button clicked");
-			Thread.sleep(5000);
 		}
 		catch (Exception e)
 		{
@@ -82,13 +161,14 @@ public class homeAddressSearch {
 		}
 	}
 	
-	@When("^I enter the Search criteria for City$")
+	
 
 	@Then("^I should navigate to the Search Results Page$")
 	public void cyclopsSearchResults() throws Exception
 	{
 		try
 		{
+			System.out.println(driver.getTitle());
 			Assert.assertTrue(driver.getTitle().equals("Cyclops - Search"));
 		}
 		catch(Exception e)
