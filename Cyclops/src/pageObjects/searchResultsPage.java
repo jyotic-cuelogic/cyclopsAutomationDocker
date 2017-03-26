@@ -38,5 +38,20 @@ public class searchResultsPage {
 		return element;
 	}
 	
+	public WebElement btn_ViewHotel(WebDriver driver, int i) throws Exception
+	{
+		try
+		{
+			System.out.println("Value of i" +i);
+			element = driver.findElement(By.xpath("//*[@id='hotel-list-container-distance']/ul/div["+i+"]/li/div[2]/div[3]/a[1]"));
+			System.out.println("View Hotel button of the Hotel number" +i+ "is found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("View Hotel button is not found");
+			throw e;
+		}
+		return element;
+	}
 	
 }
