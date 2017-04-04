@@ -1,12 +1,18 @@
 package step_definition;
 
 import java.sql.Driver;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.cyclopsLogin;
 import pageObjects.searchResultsPage;
-import pageObjects.searchResultsPageNavigate;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -17,7 +23,6 @@ public class updateSearchResults {
 	static driverInitialize d = new driverInitialize();
 	static WebDriver driver = d.driverInit();
 	searchResultsPage search = new searchResultsPage();
-	
 	
 	@Given("^should be navigated to the Search Results page$")
 	public void searchResultsSetup() throws Exception
@@ -61,16 +66,17 @@ public class updateSearchResults {
 	public void edr_click() throws Exception {
 	    try
 	    {
-	    	System.out.println(search.link_editCDR(driver));
+	    	System.out.println(search.link_editCDR(driver).getText());
 	    	search.link_editCDR(driver).click();
 	    	System.out.println("Edit CDR link clicked on");
-	    	if(search.cal_checkIn(driver).isDisplayed())
+	    	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	    	if(search.btn_resetDates(driver).isDisplayed())
 	    	{
-	    		System.out.println("Check In Date Calendar field is visible");
+	    		System.out.println("Reset Calendar field button is visible");
 	    	}
 	    	else
 	    	{
-	    		System.out.println("Check In Date Calendar field is not visible");
+	    		System.out.println("Reset Calendar field button is not visible");
 	    	}
 	    }
 	    catch(Exception e)
@@ -80,17 +86,104 @@ public class updateSearchResults {
 	    }
 	}
 
-//	@When("^update the dates, currency and room information$")
-//	public void update_the_dates_currency_and_room_information() throws Throwable {
-//	    // Write code here that turns the phrase above into concrete actions
-//	    throw new PendingException();
-//	}
-//
-//	@When("^then click on the Search Hotels button$")
-//	public void then_click_on_the_Search_Hotels_button() throws Throwable {
-//	    // Write code here that turns the phrase above into concrete actions
-//	    throw new PendingException();
-//	}
+	@When("^update the dates, currency and room information$")
+	public void updateCDR() throws Exception {
+	    try
+	    {
+	    	System.out.println("Entered Here");
+	    	Random r = new Random();
+
+	    	search.cal_checkIn(driver).click();
+	    	System.out.println("It came here");
+	    	search.btn_CalNext(driver).click();
+	    	int cal_row = r.nextInt(4);
+	    	int cal_col = r.nextInt(6);
+	    	for(int x = 2; x <= cal_row; x++)
+	    	{
+	    		if(x == cal_row)
+	    		{
+	    			for(int y = 1; y <= cal_col; y++)
+	    			{
+	    				if(y == cal_col)
+	    				{
+	    					search.txt_DateSelect(driver, x, y).click();
+	    					System.out.println("Date selected is: " +search.txt_DateSelect(driver, x, y));
+	    				}
+	    			}
+	    		}
+	    	}
+	    	
+	    	 
+	    	List<WebElement> currency = new ArrayList<WebElement>();
+	    	currency = search.drpdwn_currency(driver).getAllSelectedOptions();
+	    	System.out.println(currency);
+	    	int randomValue = r.nextInt(currency.size());
+	    	currency.get(randomValue).click();
+	    	int randomRoomCount = r.nextInt(7);
+	    	
+	    	System.out.println("Room count is" +randomRoomCount);
+	    	//Add random count of rooms
+	    	for (int i = 0; i <= randomRoomCount ; i++)
+	    	{
+	    		search.btn_addRooms(driver).click();
+	    	}
+	    	
+	    	//Select random number of adults from the dropdown
+	    	List <WebElement> adults = new ArrayList<WebElement>();	    	
+	    	int adultCount = r.nextInt(9);
+	    	for(int i = 0; i <= randomRoomCount; i++)
+	    	{
+	    		for(int j = 2; j <= adultCount  ;j++)
+	    		{
+	    			adults = search.drpdwn_Adults(driver, j).getAllSelectedOptions();
+	    			WebElement adultSelected = adults.get(r.nextInt(adults.size()));
+	    			adultSelected.click();
+	    			System.out.println(j+ "Room has" +adultSelected);
+	    		}
+	    	}
+	    	    	
+	    	//Select random number of child from the dropdown
+	    	List <WebElement> child = new ArrayList<WebElement>();	    	
+	    	for(int i = 0; i <= randomRoomCount; i++)
+	    	{
+	    		for(int j = 0; j >= 2 || j <= r.nextInt(9) ;j++)
+	    		{
+	    			child = search.drpdwn_Child(driver, j).getAllSelectedOptions();
+	    			child.get(r.nextInt(child.size())).click();
+	    		}
+	    	}
+	    	
+	    	//Select random number of child's age from the dropdown
+	    	List <WebElement> child_age = new ArrayList<WebElement>();	    	
+	    	for(int i = 0; i <= randomRoomCount; i++)
+	    	{
+	    		for(int j = 0; j >= 2 || j <= r.nextInt(9) ;j++)
+	    		{
+	    			child_age = search.drpdwn_Child(driver, j).getAllSelectedOptions();
+	    			child_age.get(r.nextInt(child_age.size())).click();
+	    		}
+	    	}
+	    	
+	    	
+	    }
+	    catch(Exception e)
+	    {
+	    	System.out.println("Update Edit Currency, Dates & Rooms test failed");
+	    	throw e;
+	    }
+	}
+
+	@When("^then click on the Search Hotels button$")
+	public void then_click_on_the_Search_Hotels_button() throws Exception {
+	    try
+	    {
+	    	
+	    }
+	    catch(Exception e)
+	    {
+	    	
+	    }
+	}
 //
 //	@Then("^I should be able to see a list of Hotels$")
 //	public void i_should_be_able_to_see_a_list_of_Hotels() throws Throwable {
@@ -247,9 +340,5 @@ public class updateSearchResults {
 //	    // Write code here that turns the phrase above into concrete actions
 //	    throw new PendingException();
 //	}
-
-	
-	
-	
 	
 }

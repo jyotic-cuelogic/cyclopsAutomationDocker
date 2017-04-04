@@ -18,11 +18,11 @@ public class homePage{
 		try
 		{
 			element = d1.findElement(By.id("breadcrum-script"));
-			System.out.println("Home Page Map found");
+			System.out.println("Breadcrumb value found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Home Page Map not found");
+			System.out.println("Breadcrumb value not found");
 			throw e;
 		}
 		return element;

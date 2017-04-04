@@ -2,7 +2,9 @@ package pageObjects;
 
 import java.util.concurrent.TimeUnit;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverInitialize.driverInitialize;
 import CSVRead.CSVReadHotelSearch;
@@ -10,7 +12,9 @@ import Utilities.settings;
 
 public class cyclopsLogin {
 	
-	String home_url;
+	static String home_url;
+	static String results_url;
+	
 	public WebDriver loginSetup(WebDriver driver) throws Exception
 	{
 		try
@@ -54,16 +58,20 @@ public class cyclopsLogin {
 		{
 			cyclopsLogin login = new cyclopsLogin();
 			login.loginSetup(driver);
-			Thread.sleep(3000);
-		
+			new WebDriverWait(driver, 8, 7);
+			System.out.println(driver.getCurrentUrl());
 			if(driver.getTitle().equals("Cyclops - Home"))
 			{
 				homePage.drp_country(driver).selectByVisibleText("United States");
-				CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
-				csvRead.csvDataRead(driver);
+//				CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
+//				csvRead.csvDataRead(driver);
 				System.out.println("Address entered");
+				homePage.drp_state(driver).selectByVisibleText("Nevada");
+				homePage.txt_address(driver).sendKeys("Mandalay Bay");
+				homePage.txt_city(driver).sendKeys("Las Vegas");
 				homePage.btn_SearchHotels(driver).click();
-				Thread.sleep(14000);
+				Thread.sleep(10000);		
+				results_url = driver.getCurrentUrl();
 				if(driver.getTitle().equals("Cyclops - Search"))
 				{
 					System.out.println("Cyclops Search Results Page is found");
@@ -85,7 +93,13 @@ public class cyclopsLogin {
 			throw e;
 		}
 		return driver;
+	}
 
+	public String getResultsURL()
+	{
+		System.out.println(results_url);
+		return results_url;
+	
 	}
 	
 }

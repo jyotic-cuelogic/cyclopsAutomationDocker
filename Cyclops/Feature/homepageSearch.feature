@@ -1,15 +1,15 @@
-@smoke
-Feature: Hotel Search from Home Page
-	I want to test hotel search for a location
-
-@tag1
-Scenario: Home Page Search for Hotel using Address 
-Given I am logged in to Cyclops
-	And present on the Home Page
-When I enter the Search criteria
-	And click on Search Hotel button
-Then I should navigate to the Search Results Page
-
+#@smoke
+#Feature: Hotel Search from Home Page
+#	I want to test hotel search for a location
+#
+#@tag1
+#Scenario: Home Page Search for Hotel using Address 
+#Given I am logged in to Cyclops
+#	And present on the Home Page
+#When I enter the Search criteria
+#	And click on Search Hotel button
+#Then I should navigate to the Search Results Page
+#
 #@tag2
 #Scenario: Home Page Search for Hotel using City
 #Given I am logged in to Cyclops
@@ -19,15 +19,6 @@ Then I should navigate to the Search Results Page
 #	And click on Search Hotel button
 #Then I should navigate to the Search Results Page
 #
-#
-#@tag2
-#Scenario: Home Page Search for Hotel using Landmark
-#Given I am logged in to Cyclops
-#	And present on the Home Page
-#When I click on the Landmark tab 
-#	And enter the landmark search values
-#	And click on Search Hotel button
-#Then I should navigate to the Search Results Page
 #
 #@tag2
 #Scenario Outline: Title of your scenario outline

@@ -13,7 +13,9 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "Feature"
 		,glue={"step_definition"}
-		, format = {"pretty", "html:target/Destination"}
+//		, format = {"pretty", "html:target/Destination"}
+		, format = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json"}
+		, tags = { "~@ignore" }
 		
 		)
  

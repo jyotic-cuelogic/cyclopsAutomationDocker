@@ -12,7 +12,7 @@
 #	And update the dates, currency and room information
 #	And then click on the Search Hotels button
 #Then I should be able to see a list of Hotels 
-#
+
 #@tag2
 #Scenario: Test Search Results page for Hotel Name Search filter
 #Given I am on Search Results Page

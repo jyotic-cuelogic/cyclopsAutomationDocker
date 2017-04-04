@@ -60,7 +60,7 @@ public class loginTest {
 		try
 		{
 			Thread.sleep(10000);
-			if(pageObjects.homePage.txt_breadcrumb(driver).isDisplayed())
+			if(pageObjects.homePage.txt_breadcrumb(driver).getText().contains("Home"))
 		    {
 		    	System.out.println("Test Case has passed");
 		    }

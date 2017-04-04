@@ -1,6 +1,8 @@
 package CSVRead;
 
 import java.io.FileReader;
+import java.util.Random;
+
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.homePage;
@@ -10,7 +12,7 @@ import com.opencsv.CSVReader;
 public class CSVReadHotelSearch {
 
  //Provide CSV file path. It Is In D: Drive.
- String CSV_PATH="C:\\Users\\sandra\\Documents\\Eclipse\\Cucumber-Workspace\\Cyclops\\src\\Utilities\\Search_Hotel_Params.csv";
+ String CSV_PATH="C:\\Users\\sandra\\Documents\\Eclipse\\Cucumber-Workspace\\Cyclops\\src\\Utilities\\SearchHotel.csv";
  
  public void csvDataRead(WebDriver driver) throws Exception{
   
@@ -25,8 +27,9 @@ public class CSVReadHotelSearch {
 //  List<String[]> csvFile = reader.readAll();
   
 //  System.out.println(csvFile);
-    
-  if ((csvCell = reader.readNext()) != null ) 
+  String[] num = reader.readNext();
+
+  if ((csvCell = num) != null ) 
   {   
 	   String address = csvCell[0];
 	   String city = csvCell[1];
