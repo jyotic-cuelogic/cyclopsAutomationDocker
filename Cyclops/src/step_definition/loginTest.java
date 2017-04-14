@@ -1,5 +1,10 @@
 package step_definition;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -62,6 +67,10 @@ public class loginTest {
 			Thread.sleep(10000);
 			if(pageObjects.homePage.txt_breadcrumb(driver).getText().contains("Home"))
 		    {
+
+				Writer writer = new BufferedWriter(new OutputStreamWriter(
+				          new FileOutputStream("C:\\Users\\sandra\\Desktop\\CyclopsPageSource\\homepage.txt"), "utf-8"));
+				    writer.write(driver.getPageSource());
 		    	System.out.println("Test Case has passed");
 		    }
 		    else
