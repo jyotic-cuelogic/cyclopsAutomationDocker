@@ -9,7 +9,7 @@
 #When I enter the Search criteria
 #	And click on Search Hotel button
 #Then I should navigate to the Search Results Page
-#
+
 #@tag2
 #Scenario: Home Page Search for Hotel using City
 #Given I am logged in to Cyclops
