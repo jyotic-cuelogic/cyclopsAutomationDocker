@@ -51,7 +51,7 @@ public class searchResultsPage {
 	{
 		try
 		{
-			element = driver.findElement(By.id("check-out-date"));
+			element = driver.findElement(By.xpath("//*[@id='check-out-picker']"));
 			System.out.println("Check Out Date calendar field found");
 		}
 		catch(Exception e)
