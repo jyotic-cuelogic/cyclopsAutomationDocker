@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pageObjects.cyclopsLogin;
+import pageObjects.dateSelector;
 import pageObjects.homePage;
 import pageObjects.propertyPage;
 import pageObjects.searchResultsPage;
@@ -29,6 +30,8 @@ public class viewHotelWithDates {
 	searchResultsPage search = new searchResultsPage();
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	propertyPage prop = new propertyPage();
+	
+	dateSelector date = new dateSelector();
 	
 	@Given("^I navigate to Search Results Page to select dates$")
 	public void searchResultsNavigate() throws Exception {
@@ -71,15 +74,10 @@ public class viewHotelWithDates {
 	    					
 	    					search.cal_checkIn(driver).click();
 	    					js.executeScript("arguments[0].removeAttribute('readonly','true')", search.cal_checkIn(driver));
-	    					search.cal_checkIn(driver).sendKeys("2017-03-25");
+	    					search.cal_checkIn(driver).sendKeys(date.checkInDate());
 	    					search.cal_checkIn(driver).sendKeys(Keys.ENTER);
 	    					System.out.println(search.cal_checkIn(driver).getText());
 	    					
-//	    					search.cal_checkOut(driver).click();
-//	    					js.executeScript("arguments[0].removeAttribute('readonly','true')", search.cal_checkOut(driver));
-//	    					search.cal_checkOut(driver).sendKeys("2017-03-27");
-//	    					search.cal_checkOut(driver).sendKeys(Keys.ENTER);
-//	    					System.out.println(search.cal_checkOut(driver).getText());
 	    					
 	    					prop.btn_propPageSearch(driver).click(); 
 	    					Thread.sleep(8000);
