@@ -38,27 +38,14 @@ public class propertyPage {
 		return element;
 	}
 	
-	public WebElement heading_hotelName(WebDriver driver) throws Exception
-	{
-		try
-		{
-			element = driver.findElement(By.xpath("//*[@id='wrapper-div']/div[4]/div[3]/div[2]/h1"));
-			System.out.println("Hotel Name Heading found");
-		}
-		catch(Exception e)
-		{
-			System.out.println("Hotel Name Heading not found");
-			throw e;
-		}
-		return element;
-	}
+
 	
 	
 	public WebElement txt_roomUnavailable(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = driver.findElement(By.xpath("//*[@id='default_rates_container']/div/li/div/div[4]/label"));
+			element = driver.findElement(By.xpath("//*[@id='default_rates_container']/div/li[1]/div/div[4]/label"));
 			System.out.println("Unavailability Text found");
 		}
 		catch(Exception e)

@@ -21,9 +21,7 @@ public class cyclopsLogin {
 	
 	static String home_url;
 	static String results_url;
-
-
-
+	
 	
 	public WebDriver loginSetup(WebDriver driver) throws Exception
 	{
@@ -117,6 +115,7 @@ public class cyclopsLogin {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		try
 		{
+			dateSelector date = new dateSelector();
 			cyclopsLogin login = new cyclopsLogin();
 			login.searchResultsSetup(driver);
 			if(homePage.txt_breadcrumb(driver).getText().contains("Hotel"))
@@ -137,19 +136,11 @@ public class cyclopsLogin {
 	    					
 	    					search.cal_checkIn(driver).click();
 	    					js.executeScript("arguments[0].removeAttribute('readonly','true')", search.cal_checkIn(driver));
-	    					search.cal_checkIn(driver).sendKeys("2017-05-05");
+	    					search.cal_checkIn(driver).sendKeys(date.checkInDate());
 	    					search.cal_checkIn(driver).sendKeys(Keys.ENTER);
 	    					System.out.println(search.cal_checkIn(driver).getText());
-	    					
-//	    					search.cal_checkOut(driver).click();
-//	    					js.executeScript("arguments[0].removeAttribute('readonly','true')", search.cal_checkOut(driver));
-//	    					search.cal_checkOut(driver).sendKeys("2017-05-06");
-//	    					search.cal_checkOut(driver).sendKeys(Keys.ENTER);
-//	    					System.out.println(search.cal_checkOut(driver).getText());
-	    					
+
 	    					Thread.sleep(2000);
-//	    					System.out.println(prop.btn_propPageSearch(driver).getTagName());
-//	    					prop.btn_propPageSearch(driver).sendKeys(Keys.ENTER);
 	    					prop.btn_propPageSearch(driver).click();
 	    					Thread.sleep(10000);
 	    					String hotel_url = driver.getCurrentUrl();
@@ -159,10 +150,6 @@ public class cyclopsLogin {
 	    					if(home.txt_breadcrumb(driver).getText().contains("CheckOut"))
 	    			    	{
 	    						System.out.println(driver.getCurrentUrl());
-//	    						Writer writer = new BufferedWriter(new OutputStreamWriter(
-//	    						          new FileOutputStream("C:\\Users\\sandra\\Desktop\\CyclopsPageSource\\propWithDates.txt"), "utf-8"));
-//	    						    writer.write(driver.getPageSource());
-//	    						System.out.println(prop.heading_hotelName(driver).getText());
 	    			    		if(prop.btn_roomSelect(driver).isDisplayed())
 	    				    	{
 	    				    		System.out.println("Property page with Dates found - Select Room button found");
