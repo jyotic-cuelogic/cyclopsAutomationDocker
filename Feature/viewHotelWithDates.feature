@@ -1,11 +1,12 @@
-#@smoke
-#Feature: View Hotel on Property with Dates page
-#	I want to test the View Hotel functionality when Dates are selected
-#
-#Background: Login User and navigate to Results Page to select dates
-#
-#@tag1
-#Scenario: Navigating to Property with Dates Page
-#Given I navigate to Search Results Page to select dates
-#When I click on the View Hotels button when Dates are selected
-#Then I should be navigated to Property with Dates page 
+Feature: View Hotel on Property with Dates page
+	I want to test the View Hotel functionality when Dates are selected and rooms are displayed
+
+Background: User should be logged in to Cyclops
+Given I have logged in to Cyclops for test Property with Dates page
+
+@current
+Scenario: Verifying if rooms are available when user navigates to Property with Dates page
+Then I should be able to validate that rooms are being displayed 
+
+Scenario: Verifying is Create DID functionality is working fine as expected
+Then I should be able to create DID number from Property with Dates page

@@ -8,7 +8,6 @@ import java.io.Writer;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,14 +21,15 @@ public class loginTest {
 		
 	static driverInitialize d = new driverInitialize();
 	static WebDriver driver = d.driverInit();
-	
+	settings seturl = new settings();
+	WebDriverWait wait = new WebDriverWait(driver, 60);
+
 	@Given("^I have the permission to Cyclops as an Agent through Phalanx$")
 	public void valid_agent_id() throws Exception
 	{
 		try
 		{
-			
-			String url = settings.cyclops_url();
+			String url = seturl.cyclops_url();
 			driver.get(url);
 		}
 		catch (Exception e)
@@ -45,9 +45,8 @@ public class loginTest {
 		{
 			if(pageObjects.callDisposition.fcd_text(driver).isDisplayed())
 			{
-				pageObjects.callDisposition.call_dispose_slider(driver).click();
-		    	pageObjects.callDisposition.call_dispose_option(driver).click();
-		    	pageObjects.callDisposition.apply_button(driver).click();
+				pageObjects.callDisposition.call_dispose_slider(driver).selectByIndex(2);
+				pageObjects.callDisposition.apply_button(driver).click();
 		    	System.out.println("Forced Call Disposition value set");
 		    }
 		    else
@@ -64,23 +63,19 @@ public class loginTest {
 	@Then("^I should be able to view Cyclops' Home Page$")
 	public void cyclops_home() throws Exception
 	{
-		WebDriverWait wait = new WebDriverWait(driver, 60);
 		try
 		{ 
-			wait.until(ExpectedConditions.titleContains("Home"));
-			if(pageObjects.homePage.txt_breadcrumb(driver).getText().contains("Home"))
+			wait.until(ExpectedConditions.urlContains("home"));
+			System.out.println("url contains home");
+			if(driver.getCurrentUrl().contains("home"))
 		    {
-
-				Writer writer = new BufferedWriter(new OutputStreamWriter(
-				          new FileOutputStream("C:\\Users\\sandra\\Desktop\\CyclopsPageSource\\homepage.txt"), "utf-8"));
-				    writer.write(driver.getPageSource());
-		    	System.out.println("Test Case has passed");
+		    	System.out.println("User has landed on Cyclops' Home Page. Test Case has passed.");
 		    }
 		    else
 		    {
-		    	System.out.println("Test Case has failed");
+		    	System.out.println("cyclops_home failed");
 		    }
-			driver.quit();
+			driver.close();
 		}
 		catch (Exception e)
 		{

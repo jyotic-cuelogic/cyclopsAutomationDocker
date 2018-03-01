@@ -1,101 +1,38 @@
-#@tag
-#Feature: Update search criteria on Search Results Page
-#	I want to test the search results page functionality like refine search, sort & filter
-#
-#Background: User should be logged in to Cyclops
-#And should be navigated to the Search Results page
-#
-#@tag1
-#Scenario: Refine search criteria on Search Results Page
-#Given I am on Search Results Page
-#When I click on the Edit Dates & rooms link 
-#	And update the dates, currency and room information
-#	And then click on the Search Hotels button
-#Then I should be able to see a list of Hotels 
+#@smoke
+Feature: Update search criteria on Search Results Page
+	I want to test the search results page functionality like refine search, sort & filter
 
-#@tag2
-#Scenario: Test Search Results page for Hotel Name Search filter
-#Given I am on Search Results Page
-#When I enter the name of the hotel in the hotel search filter text
-#	And I click on the Go button
-#Then I should be able to see a list of Hotels with the searched text in its name
-#
-#@tag3
-#Scenario: Test Search Results page for Distance filter
-#Given I am on Search Results Page
-#When I set the distance range
-#Then I should be able to see a list of Hotels between the set distance range
-#
-#@tag4
-#Scenario: Test Search Results page for Price filter
-#Given I am on Search Results Page
-#When I set the price range
-#Then I should be able to see a list of Hotels between the set price range
-#
-#@tag5
-#Scenario: Test Search Results page for Star Ratings filter
-#Given I am on Search Results Page
-#When I set the star ratings range
-#Then I should be able to see a list of Hotels between the set star rating
-#
-#@tag5
-#Scenario: Test Search Results page for Amenities filter
-#Given I am on Search Results Page
-#When I set the amenities checkboxes
-#Then I should be able to see a list of Hotels with the selected amenity
-#
-#@tag6
-#Scenario: Test Search Results page for Load More
-#Given I am on Search Results Page
-#When I click on the Load More Hotel button
-#Then I should be able to view more number of hotels on the Search Results Page
-#
-#@tag7
-#Scenario: Test Descending Distance Sort on the Search Results Page
-#Given I am on Search Results Page
-#When I click on the Distance Sort for the first time
-#Then I should get a list of hotels in descending order of distance
-#
-#@tag8
-#Scenario: Test Ascending Distance Sort on the Search Results Page
-#Given I am on Search Results Page
-#When I click on the Distance Sort for the second time
-#Then I should get a list of hotels in ascending order of distance
-#
-#@tag9
-#Scenario: Test Price Sort on the Search Results Page when clicked on first time
-#Given I am on Search Results Page
-#When I click on the Price Sort for the first time
-#Then I should get a list of hotels in ascending order of price
-#
-#@tag10
-#Scenario: Test Price Sort on the Search Results Page when clicked on second time
-#Given I am on Search Results Page
-#When I click on the Price Sort for the second time
-#Then I should get a list of hotels in descending order of price
-#
-#@tag11
-#Scenario: Test Star Rating Sort on the Search Results Page when clicked on first time
-#Given I am on Search Results Page
-#When I click on the Star Rating Sort for the first time
-#Then I should get a list of hotels in descending order of star rating
-#
-#@tag10
-#Scenario: Test Star Rating Sort on the Search Results Page when clicked on second time
-#Given I am on Search Results Page
-#When I click on the Star Rating Sort for the second time
-#Then I should get a list of hotels in ascending order of star rating
-#
-#
-#
-#
-#@tag2
-#Scenario Outline: Title of your scenario outline
-#Given I want to write a step with <name>
-#When I check for the <value> in step
-#Then I verify the <status> in step
-#
-#Examples:
-    #| name  |value | status |
-    #| name1 |  5   | success|
-    #| name2 |  7   | Fail   |
+Background: User should be logged in to Cyclops
+Given I have logged in to Cyclops to test Search Results Page 
+
+Scenario: Validate Search Results page
+	When User is on Search Results Page to validate search Results page
+	Then I should be able to view the breadcrumb with the location's search criteria
+	And I should also be displayed the Sort tabs
+	And I should also be displayed the Search Hotel Section
+	And I should also be displayed the section change the dates, add rooms and change the currency
+	And I should also be displayed the filters to search by hotel's name, star ratings, price range, distance range and amenities filter
+	And I should be displayed the Hotel's list which should have the hotel's name, address, star ratings, image icon, map icon, amenities icon, View Hotel button and Search Nearby button
+
+Scenario: Validate Sort functionality on Results Page
+	When User is on Search Results Page to validate search Results page
+	When User clicks on the Distance Sort Tab for the first time
+	Then the hotels should get arranged in ascending order of their distance
+	When User clicks on the Distance Sort Tab for the second time
+	Then the hotels should get arranged in descending order of their distance
+	When User clicks on the Price Sort Tab for the first time
+	Then the hotels should get arranged in ascending order of their price
+	When User clicks on the Price Sort Tab for the second time
+	Then the hotels should get arranged in descending order of their price
+	When User clicks on the Rating Sort Tab for the first time
+	Then the hotels should get arranged in descending order of their ratings
+	When User clicks on the Ratings Sort Tab for the second time
+	Then the hotels should get arranged in ascending order of their ratings
+	
+
+Scenario: Validate the Hotel Information on the Results Page
+	When User is on Search Results Page to validate search Results page
+	Then I should be displayed the Hotel's list which should have the hotel's name, address, star ratings, image icon, map icon, amenities icon, View Hotel button and Search Nearby button
+	And I should be able to click on the image icon for the first hotel and view the images for that hotel
+	And I should be able to click on the map's icon for the first hotel for which the gmap's url should get generated
+	And I should be able to click on the amenities icon for the first hotel and view the list of amenities for that hotel

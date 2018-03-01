@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import driverInitialize.driverInitialize;
 
@@ -18,6 +18,7 @@ public class callDisposition {
 			// TODO Auto-generated constructor stub
 		}
 	 private static WebElement element = null;
+	 static Select select = null;
 	 
 	 
 	 
@@ -25,24 +26,24 @@ public class callDisposition {
 	{
 		try
 		{	
-			
-			element = d.findElement(By.className("cd-message"));
-			System.out.println("FCD text page & text found");
+			element = d.findElement(By.xpath("//p[contains(.,'Please dispose your previous call before taking your new call')]"));
+			System.out.println("FCD text found");
 		}
 		catch (Exception e)
 		{
-			System.out.println("FCD text page & text not found");
+			System.out.println("FCD text not found");
 			throw e;
 		}
 		return element;
 	}
 		
 	
-	public static WebElement call_dispose_slider(WebDriver d) throws Exception
+	public static Select call_dispose_slider(WebDriver d) throws Exception
 	{
 		try
 		{
-			element = d.findElement(By.id("call_call_disposition_id"));
+			element = d.findElement(By.id("fusion_call_disposition_status"));
+			select = new Select(element);
 			System.out.println("Call Disposition Slider found");
 		}
 		catch (Exception e)
@@ -50,10 +51,10 @@ public class callDisposition {
 			System.out.println("Call Disposition Slider not found");
 			throw e;
 		}
-		return element;
+		return select;
 	}
 	
-	public static WebElement call_dispose_option(WebDriver d) throws Exception
+	/*public static WebElement call_dispose_option(WebDriver d) throws Exception
 	{
 		try
 		{
@@ -66,13 +67,13 @@ public class callDisposition {
 			throw e;
 		}
 		return element;
-	}
+	}*/
 	
 	public static WebElement apply_button(WebDriver d) throws Exception
 	{
 		try
 		{
-			element = d.findElement(By.xpath("//*[@id='new_call']/div[2]/input"));
+			element = d.findElement(By.id("fusion_call_disposition_submit"));
 			System.out.println("Call disposition button found");
 		}
 		catch (Exception e)

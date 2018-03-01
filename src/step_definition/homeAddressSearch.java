@@ -3,12 +3,16 @@ package step_definition;
 import java.awt.List;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import CSVRead.CSVReadHotelSearch;
-import pageObjects.cyclopsLogin;
+import CommonFunctions.cyclopsLogin;
 import pageObjects.homePage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -19,14 +23,14 @@ public class homeAddressSearch {
 
 	static driverInitialize d = new driverInitialize();
 	static WebDriver driver = d.driverInit();
+	cyclopsLogin cycLogin = new cyclopsLogin();
+	
 	
 	@Given("^I am logged in to Cyclops$")
 	public void cyclops_login() throws Exception {
 		try
 		{
-			cyclopsLogin cycLogin = new cyclopsLogin();
 			driver = cycLogin.loginSetup(driver);
-			
 			System.out.println("Login to Cyclops Successful");
 		}
 		catch (Exception e)
@@ -71,50 +75,15 @@ public class homeAddressSearch {
 			throw e;
 		}
 	}
-
-	/*@When("^I click on the City tab$")
-	public void clickCityTab() throws Exception
-	{
-		try
-		{
-			homePage.tab_city(driver).click();
-			System.out.println("City tab clicked on & Active");
-		}
-		catch (Exception e)
-		{
-			System.out.println("City tab not clicked on");
-		}
-	}
-	
-	@When("^enter the city search values$")
-	public void fillCity() throws Exception
-	{
-		try
-		{
-			System.out.println(driver.getTitle());
-			homePage.drp_country_city(driver).selectByVisibleText("United States");
-			System.out.println("reached here - country selected");
-			homePage.drp_state_City(driver).selectByVisibleText("Nevada");
-			System.out.println("reached here - state selected");
-			homePage.txt_city_city(driver).clear();
-			System.out.println("reached here - city selected");
-			homePage.txt_city_city(driver).sendKeys("las vegas");
-			System.out.println("City values filled");
-		}
-		catch (Exception e)
-		{
-			System.out.println("City values not filled");
-			throw e;
-		}
-	}
-	*/
-
 	
 	@When("^click on Search Hotel button$")
 	public void clickSearch() throws Exception {
 		try
 		{
-			homePage.btn_SearchHotels(driver).click();
+			
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("document.getElementById('fusion-sidebar').scrollTop += 200");
+			homePage.btn_SearchHotels(driver).sendKeys(Keys.ENTER);
 			System.out.println("Search Hotels button clicked");
 		}
 		catch (Exception e)
@@ -124,6 +93,26 @@ public class homeAddressSearch {
 		}
 	}
 	
+	
+	@When("^I enter city's search criteria$")
+	public void searchFromCityTab() throws Exception
+	{
+		try
+		{
+			homePage.tab_city(driver).click();
+			System.out.println("city tab clicked on");
+			homePage.drpdwn_cityState(driver).selectByValue("AZ");
+			System.out.println("State selected under city tab");
+			homePage.txt_cityCity(driver).sendKeys("phoenix");
+			System.out.println("city value inserted under city tab");
+		}
+		catch(Exception e)
+		{
+			System.out.println("searchFromCityTab failed");
+			driver.close();
+			throw e;
+		}
+	}
 	
 
 	@Then("^I should navigate to the Search Results Page$")

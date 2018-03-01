@@ -12,237 +12,385 @@ import org.openqa.selenium.support.ui.Select;
 
 public class searchResultsPage {	
 	
-	private static WebElement element = null;
-//	private static WebElement [] arraylist;
-	private static Select select = null;
+	WebElement element = null;
+	Select select = null;
+	List<WebElement> list = null;
 	
-	public WebElement link_editCDR(WebDriver driver) throws Exception
+	public WebElement txt_CitySearch(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = driver.findElement(By.id("search-dates-rooms-text"));
-			System.out.println("Edit Currency, Dates & Rooms links found");
+			element = driver.findElement(By.name("city"));
+			System.out.println("City textfield found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Edit Currency, Dates & Rooms links not found");
+			System.out.println("City textfield not found");
 			throw e;
 		}
 		return element;
 	}
 	
-	public WebElement cal_checkIn(WebDriver driver) throws Exception
+	public WebElement tab_sortDistance(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = driver.findElement(By.xpath(".//*[@id='check-in-picker']"));
-			
-			System.out.println("Check In Date calendar field found");
+			element = driver.findElement(By.xpath("//span[contains(.,'Distance')]"));
+			System.out.println("Distance sort found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Check In Date calendar field not found");
+			System.out.println("Distance sort not found");
 			throw e;
 		}
 		return element;
 	}
 	
-	public WebElement cal_checkOut(WebDriver driver) throws Exception
+	public WebElement tab_sortPrice(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = driver.findElement(By.xpath("//*[@id='check-out-picker']"));
-			System.out.println("Check Out Date calendar field found");
+			element = driver.findElement(By.xpath("//span[contains(.,'Price')]"));
+			System.out.println("Price sort found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Check Out Date calendar field not found");
-			throw e;
-		}
-		return element;
-	}
-
-	public Select drpdwn_currency(WebDriver driver) throws Exception
-	{
-		try
-		{
-			select = new Select(driver.findElement(By.id("currency_code")));
-			System.out.println("Currency dropdown field found");
-		}
-		catch (Exception e)
-		{
-			System.out.println("Currency dropdown field not found");
-			throw e;
-		}
-		return select;
-	}
-	
-	public WebElement btn_addRooms(WebDriver driver) throws Exception
-	{
-		try
-		{
-			element = driver.findElement(By.id("add_room"));
-			System.out.println("Add Rooms button found");
-		}
-		catch(Exception e)
-		{
-			System.out.println("Add Rooms button not found");
+			System.out.println("Price sort not found");
 			throw e;
 		}
 		return element;
 	}
 	
-	public WebElement btn_removeRooms(WebDriver driver) throws Exception
+	public WebElement tab_sortRating(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = driver.findElement(By.id("remove_room"));
-			System.out.println("Remove Rooms button found");
+			element = driver.findElement(By.xpath("//span[contains(.,'Rating')]"));
+			System.out.println("Rating sort found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Remove Rooms button not found");
+			System.out.println("Rating sort not found");
 			throw e;
 		}
 		return element;
 	}
 	
-	public Select drpdwn_Adults(WebDriver driver, int n) throws Exception
+	public WebElement tab_sortDistanceReverse(WebDriver driver) throws Exception
 	{
 		try
 		{
-			select = new Select(driver.findElement(By.xpath("//*[@id='search-dates-rooms-container']/div[2]/div[n]/div[1]/select")));
-			System.out.println("Adult dropdown found of Room" +n);
+			element = driver.findElement(By.id("distance_reverse"));
+			System.out.println("Reverse Distance sort found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Adult dropdown not found of Room" +select.toString());
-			throw e;
-		}
-		return select;
-	}
-	
-	public Select drpdwn_Child(WebDriver driver, int n) throws Exception
-	{
-		try
-		{
-			select = new Select(driver.findElement(By.xpath("//*[@id='search-dates-rooms-container']/div[2]/div[n]/div[2]/select")));
-			System.out.println("Child dropdown found of Room:" +select.toString());
-		}
-		catch(Exception e)
-		{
-			System.out.println("Child dropdown not found of Room" +n);
-			throw e;
-		}
-		return select;
-	}
-	
-	public Select drpdwn_ChildAge(WebDriver driver, int n) throws Exception
-	{
-		try
-		{
-			select = new Select(driver.findElement(By.xpath("//*[@id='search-dates-rooms-container']/div[2]/div[n]/div[3]")));
-			System.out.println("Child Age dropdown found of Room" +select.toString());
-		}
-		catch(Exception e)
-		{
-			System.out.println("Child Age dropdown not found of Room" +n);
-			throw e;
-		}
-		return select;
-	}
-	
-	public WebElement btn_CalNext(WebDriver driver) throws Exception
-	{
-		try
-		{
-			element = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span"));
-			System.out.println("Calendar's next button found");
-		}
-		catch (Exception e)
-		{
-			System.out.println("Calendar's next button not found");
+			System.out.println("Reverse Distance sort not found");
 			throw e;
 		}
 		return element;
 	}
 	
-	public WebElement txt_DateSelect(WebDriver driver, int i, int j) throws Exception
+	public WebElement tab_sortPriceReverse(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table/tbody/tr[i]/td[j]/a"));
-			System.out.println("Date selected : " +element.getText());
+			element = driver.findElement(By.id("room_rate_reverse"));
+			System.out.println("Reverse Price sort found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Date not selected");
+			System.out.println("Reverse Price sort not found");
 			throw e;
 		}
 		return element;
 	}
 	
-	
-	public WebElement btn_resetDates(WebDriver driver) throws Exception
+	public WebElement tab_sortRatingReverse(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = driver.findElement(By.id("reset-date"));
-			System.out.println("Reset Dates button found");
+			element = driver.findElement(By.id("star_rating_reverse"));
+			System.out.println("Reverse Rating sort found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Reset Dates button not found");
+			System.out.println("Reverse Rating sort not found");
+			throw e;
+		}
+		return element;
+	}
+		
+	public WebElement drpdwn_Country(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("search_form_country"));
+			System.out.println("Country dropdown on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("drpdwn_Country failed");
+			throw e;
+		}
+		return element;
+	}
+	
+	public WebElement drpdwn_State(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("state_province"));
+			System.out.println("State dropdown on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("drpdwn_State failed");
+			throw e;
+		}
+		return element;
+	}
+	
+	public WebElement txt_address(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("address"));
+			System.out.println("Address textfield on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("txt_address failed");
+			throw e;
+		}
+		return element;
+	}
+	
+	public WebElement txt_zipCode(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("postal_code_filter"));
+			System.out.println("Postal Code textfield on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("txt_zipCode failed");
 			throw e;
 		}
 		return element;
 	}
 
-	
-	public WebElement btn_ViewHotel(WebDriver d, int i) throws Exception
+	public WebElement tab_EditDCR(WebDriver driver) throws Exception
 	{
 		try
 		{
-			element = d.findElement(By.xpath("//*[@id='hotel-list-container-distance']/ul/div["+i+"]/li/div[2]/div[3]/a[1]"));
+			element = driver.findElement(By.xpath("//a[contains(.,'EDIT DATES, CURRENCY & ROOMS')]"));
+			System.out.println("Tab to Edit Dates, Currency and Rooms found on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("tab_EditDCR failed");
+			throw e;
+		}
+		return element;
+	}
+	
+	public WebElement cal_CheckIn(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("check-in-picker"));
+			System.out.println("CheckIn Date calendar textfield on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("cal_CheckIn failed");
+			throw e;
+		}
+		return element;
+	}
+
+	public WebElement cal_CheckOut(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("check-out-picker"));
+			System.out.println("CheckOut Date calendar textfield on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("cal_CheckOut failed");
+			throw e;
+		}
+		return element;
+	}
+	
+	public Select drpdwn_Currency(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("currency_code"));
+			select = new Select(element);
+			System.out.println("Currency dropdown on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("drpdwn_Currency failed");
+			throw e;
+		}
+		return select;
+	}
+	
+	public WebElement title_RoomsSection(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.xpath("//div[@class='fusion-rooms-title f-size-md f-bold']"));
+			System.out.println("Rooms section on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("title_RoomsSection failed");
+			throw e;
+		}
+		return element;
+	}
+
+	public WebElement txtFilter_HotelName(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.id("fusion_sidebar_hotel_name"));
+			System.out.println("Hotel name filter on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("txtFilter_HotelName failed");
+			throw e;
+		}
+		return element;
+	}
+
+	public WebElement title_distanceFilter(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.xpath("//p[contains(.,'Distance (ml)')]"));
+			System.out.println("Distance filter on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("title_distanceFilter failed");
+			throw e;
+		}
+		return element;
+	}
+
+	public WebElement title_priceFilter(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.xpath("//p[contains(.,'Price Range (USD)')]"));
+			System.out.println("Price filter on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("title_priceFilter failed");
+			throw e;
+		}
+		return element;
+	}
+	
+	public WebElement title_ratingsFilter(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.xpath("//p[contains(.,'Rating')]"));
+			System.out.println("Ratings filter on Search Results Page found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("title_ratingsFilter failed");
+			throw e;
+		}
+		return element;
+	}
+
+	public List<WebElement> list_hotels(WebDriver driver) throws Exception
+	{
+		try
+		{
+			list = driver.findElements(By.className("fusion-hotel-header-without-img"));
+		}
+		catch(Exception e)
+		{
+			System.out.println("list_hotels failed");
+			throw e;
+		}
+		return list;
+	}
+	
+	public List<WebElement> list_hotelsImages(WebDriver driver) throws Exception
+	{
+		try
+		{
+			list = driver.findElements(By.xpath(".//a[contains(@class,'fusion-trigger photo')]"));
+		}
+		catch(Exception e)
+		{
+			System.out.println("list_hotelsImages failed");
+			throw e;
+		}
+		return list;
+	}
+	
+//	google-external-map-link
+	
+	public List<WebElement> list_hotelsMaps(WebDriver driver) throws Exception
+	{
+		try
+		{
+			list = driver.findElements(By.xpath(".//a[contains(@class,'google-external-map-link')]"));
+			System.out.println("Hotel map link found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("list_hotelsMaps failed");
+			throw e;
+		}
+		return list;
+	}
+	
+	public List<WebElement> list_hotelsAmenities(WebDriver driver) throws Exception
+	{
+		try
+		{
+			list = driver.findElements(By.xpath(".//p[contains(@class,'fusion-tooltip tooltip-click')]"));
+			System.out.println("Hotel amenities link found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("list_hotelsAmenities failed");
+			throw e;
+		}
+		return list;
+	}
+
+	public WebElement btn_ViewHotel(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.xpath(".//a[contains(.,'VIEW HOTEL')]"));
 			System.out.println("View Hotel button found");
 		}
 		catch(Exception e)
 		{
-			System.out.println("View Hotel button not found");
+			System.out.println("btn_ViewHotel failed");
 			throw e;
 		}
 		return element;
 	}
-	
-	
-	public WebElement calbox(WebDriver d) throws Exception
-	{
-		try
-		{
-			element = d.findElement(By.xpath(".//*[@id='ui-datepicker-div']"));
-			System.out.println("Calendar select box found");
-		}
-		catch(Exception e)
-		{
-			System.out.println("Calendat select box not found");
-			throw e;
-		}
-		return element;
-	}
-	
-	public WebElement sect_EditCDR(WebDriver d)throws Exception
-	{
-		try
-		{
-			element = d.findElement(By.id("search-dates-rooms-container"));
-			System.out.println("Edit Dates section has expanded");
-		}
-		catch(Exception e)
-		{
-			System.out.println("Edit dates section is collapsed");
-			throw e;
-		}
-		return element;
-	}
+
 	
 }

@@ -1,0 +1,16 @@
+FROM maven:3.5.2-jdk-8
+USER root
+RUN mkdir -p /home/cyclopsDocker
+COPY pom.xml pom.xml
+#COPY src src
+#COPY Feature Feature 
+WORKDIR /home/cyclopsDocker/
+RUN apt-get update
+RUN yes | apt-get install iputils-ping
+#RUN yes | apt-get install git
+#RUN git clone https://github.com/shubhamj-cuelogic/MavenJenkins.git
+RUN echo "Build has been created successfully"
+WORKDIR /
+#CMD mvn clean install
+#CMD mvn build
+CMD mvn test
