@@ -5,9 +5,8 @@ WORKDIR /home/automationFramework1/
 RUN apt-get update
 RUN yes | apt-get install iputils-ping
 RUN yes | apt-get install git
-ARG SHA=LATEST
-#RUN SHA=${SHA} \ git clone https://github.com/sandraj-cuelogic/cyclopsAutomationDocker.git
-RUN git clone https://github.com/sandraj-cuelogic/cyclopsAutomationDocker.git
+ADD https://api.github.com/repos/sandraj-cuelogic/cyclopsAutomationDocker/git/refs/heads/master version.json
+RUN git clone -b master https://github.com/sandraj-cuelogic/cyclopsAutomationDocker.git 
 RUN echo "Build has been created successfully"
 WORKDIR cyclopsAutomationDocker/
 CMD mvn clean install
