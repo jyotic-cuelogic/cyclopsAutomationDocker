@@ -1,15 +1,11 @@
-/*package automationframework;
-
-*//**
- * @author Shubham Jain
- *
- *//*
+package automationframework;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 
 public class ExcelLib {
 
@@ -72,4 +68,4 @@ public class ExcelLib {
 		}
 		
 	}
-}*/
+}
