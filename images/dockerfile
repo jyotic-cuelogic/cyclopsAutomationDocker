@@ -6,7 +6,7 @@ FROM maven:3.5.2-jdk-8
 USER root
 
 # This is creating the directory in the linux folder system
-RUN mkdir -p /home/automationFramework1
+RUN mkdir -p /home/automationFramework
 
 # Here we are defining the work directory that we'll be using
 WORKDIR /home/automationFramework/
@@ -22,7 +22,7 @@ RUN yes | apt-get install git
 ADD https://api.github.com/repos/sandraj-cuelogic/cyclopsAutomationDocker/git/refs/heads/development version.json
 
 # This is where you are supposed to specify your repository
-RUN git clone -b development https://github.com/sandraj-cuelogic/cyclopsAutomationDocker.git 
+RUN git clone -b development  https://github.com/sandraj-cuelogic/cyclopsAutomationDocker.git 
 
 # This is the work directory where pom.xml is present
 WORKDIR cyclopsAutomationDocker/
