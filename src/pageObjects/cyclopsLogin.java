@@ -1,22 +1,8 @@
 package pageObjects;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
-import org.omg.CORBA.PUBLIC_MEMBER;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import driverInitialize.driverInitialize;
-import CSVRead.CSVReadHotelSearch;
 import Utilities.settings;
 
 public class cyclopsLogin {
@@ -222,11 +208,11 @@ public class cyclopsLogin {
 	}*/
 	
 	
-	public String getResultsURL()
+/*	public String getResultsURL()
 	{
 		System.out.println(results_url);
 		return results_url;
 	
 	}
-	
+*/	
 }
