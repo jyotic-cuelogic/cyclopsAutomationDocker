@@ -36,8 +36,8 @@ public class cyclopsLogin {
 			System.out.println(driver.getCurrentUrl());
 			if (callDisposition.fcd_text(driver).isDisplayed())
 			{
-				callDisposition.call_dispose_slider(driver).click();
-				callDisposition.call_dispose_option(driver).click();
+				callDisposition.call_dispose_slider(driver).selectByIndex(5);
+//				callDisposition.call_dispose_option(driver).click();
 				callDisposition.apply_button(driver).click();
 				System.out.println("FCD value set");
 				wait.until(ExpectedConditions.titleContains("Home"));
@@ -53,7 +53,7 @@ public class cyclopsLogin {
 					System.out.println("FCD script failed");
 				}
 			}	
-			else if(homePage.txt_breadcrumb(driver).isDisplayed())
+			else if(driver.getCurrentUrl().contains("home"))
 			{
 				System.out.println("Logged in & on home page without FCD");
 			}
@@ -115,7 +115,7 @@ public class cyclopsLogin {
 	propertyPage prop = new propertyPage();
 	
 	
-	public WebDriver propertyPageSetup(WebDriver driver) throws Exception
+	/*public WebDriver propertyPageSetup(WebDriver driver) throws Exception
 	{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebDriverWait wait = new WebDriverWait(driver, 60);
@@ -178,9 +178,9 @@ public class cyclopsLogin {
 		}
 		return driver;
 	}
+	*/
 	
-	
-	public WebDriver checkOutPageSetup(WebDriver driver) throws Exception
+	/*public WebDriver checkOutPageSetup(WebDriver driver) throws Exception
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 80);
 		try
@@ -219,7 +219,7 @@ public class cyclopsLogin {
 			throw e;
 		}
 		return driver;
-	}
+	}*/
 	
 	
 	public String getResultsURL()

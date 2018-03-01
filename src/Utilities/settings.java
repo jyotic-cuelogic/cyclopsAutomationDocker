@@ -2,9 +2,9 @@ package Utilities;
 
 public class settings {
 
-	String url;
+	static String url;
 	
-	public String cyclops_url() throws Exception
+	public static String cyclops_url() throws Exception
 	{
 		try
 		{
