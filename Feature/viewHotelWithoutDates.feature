@@ -1,4 +1,3 @@
-#@smoke
 Feature: View Hotel on Property without Dates page
 	I want to test the View Hotel functionality when Dates are not selected
 

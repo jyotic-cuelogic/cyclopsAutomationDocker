@@ -1,4 +1,3 @@
-@login
 Feature: Login to Cyclops
 	I want to test the login to Cyclops
 	
