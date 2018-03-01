@@ -43,7 +43,7 @@ public class cyclopsLogin {
 				wait.until(ExpectedConditions.titleContains("Home"));
 							
 				System.out.println(driver.getTitle());
-				if(driver.getTitle().equals("Cyclops - Home"))
+				if(driver.getCurrentUrl().contains("home"))
 				{
 					home_url = driver.getCurrentUrl();
 					System.out.println("FCD Passed. Logged in & on home page with FCD");
@@ -66,7 +66,7 @@ public class cyclopsLogin {
 		return driver;
 	}
 	
-	public WebDriver searchResultsSetup(WebDriver driver) throws Exception
+	/*public WebDriver searchResultsSetup(WebDriver driver) throws Exception
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		try
@@ -114,7 +114,7 @@ public class cyclopsLogin {
 	homePage home = new homePage();
 	propertyPage prop = new propertyPage();
 	
-	
+	*/
 	/*public WebDriver propertyPageSetup(WebDriver driver) throws Exception
 	{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
