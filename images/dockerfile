@@ -1,14 +1,32 @@
+# This file will define where your project will run, in which environment. 
+# The line below specifies the os and the environment being used. We've used linum with maven and jdk installed
 FROM maven:3.5.2-jdk-8
+
+# This is the user defines
 USER root
+
+# This is creating the directory in the linux folder system
 RUN mkdir -p /home/automationFramework1
-WORKDIR /home/automationFramework1/
+
+# Here we are defining the work directory that we'll be using
+WORKDIR /home/automationFramework/
+
+# This is to pull updates 
 RUN apt-get update
 RUN yes | apt-get install iputils-ping
+
+# Here we install git for cloning purpose
 RUN yes | apt-get install git
+
+# This is the API call for Git. The api call will return different results when the head changes, invalidating docker's cache.
 ADD https://api.github.com/repos/sandraj-cuelogic/cyclopsAutomationDocker/git/refs/heads/master version.json
+
+# This is where you are supposed to specify your repository
 RUN git clone -b master https://github.com/sandraj-cuelogic/cyclopsAutomationDocker.git 
-RUN echo "Build has been created successfully"
+
+# This is the work directory where pom.xml is present
 WORKDIR cyclopsAutomationDocker/
+
+# Here we are executing maven related commands
 CMD mvn clean install
 CMD mvn test
-#RUN ping google.com
