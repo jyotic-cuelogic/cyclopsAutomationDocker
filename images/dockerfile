@@ -30,3 +30,9 @@ WORKDIR cyclopsAutomationDocker/
 # Here we are executing maven related commands
 CMD mvn clean install
 CMD mvn test
+
+#This is to initiate the creating of the report's html
+CMD mvn site
+
+#This is the report's taget directory
+CMD mvn surefire-report:report  
