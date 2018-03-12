@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageObjects.Common;
 import pageObjects.homePage;
 import CSVRead.CSVReadHotelSearch;
 
@@ -15,6 +16,7 @@ public class ResultsPageSetup {
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		cyclopsLogin login = new cyclopsLogin();
+		Common common = new Common();
 		try
 		{
 			login.loginSetup(driver);
@@ -27,6 +29,7 @@ public class ResultsPageSetup {
 				js.executeScript("document.getElementById('fusion-sidebar').scrollTop += 200");
 				homePage.btn_SearchHotels(driver).sendKeys(Keys.ENTER);
 				wait.until(ExpectedConditions.urlContains("search"));
+				wait.until(ExpectedConditions.invisibilityOf(common.img_loader(driver)));
 				if(driver.getCurrentUrl().contains("/search"))
 				{
 					System.out.println("Cyclops Search Results Page is found");

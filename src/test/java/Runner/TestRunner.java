@@ -33,7 +33,7 @@ import net.masterthought.cucumber.Reportable;*/
 		,glue={"step_definition"}
 		,plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json","junit:target/cucumber.xml"}
 //		,tags= {"@login"}  // Run tests in groups
-		,tags= {"~@ignore"}
+		,tags= {"@current"}
 //		,monochrome = false
 //		,dryRun = true
 		)

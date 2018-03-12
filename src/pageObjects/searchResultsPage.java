@@ -391,6 +391,22 @@ public class searchResultsPage {
 		}
 		return element;
 	}
+	
+	public WebElement overlay_resultsPage(WebDriver driver) throws Exception
+	{
+		try
+		{
+			element = driver.findElement(By.xpath("//div[@class='blockUI blockOverlay']"));
+			System.out.println("Overlay on search results found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("overlay_resultsPage failed");
+			throw e;
+		}
+		return element;
+	}
+	
 
 	
 }

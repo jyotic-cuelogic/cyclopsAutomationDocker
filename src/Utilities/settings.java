@@ -8,7 +8,7 @@ public class settings {
 	{
 		try
 		{
-			url = "https://sales-stg.travelpass.com/?vocalcomid=123456@nat.ipitimi.net&indexid=TMP_20151218_123612&DID=9879879870&ANI=UNKNOWN";
+			url = "https://sales.travelpass.com/?vocalcomid=123456@nat.ipitimi.net&indexid=TMP_20151218_123612&DID=9879879870&ANI=UNKNOWN";
 		}
 		catch(Exception e)
 		{

@@ -42,7 +42,7 @@ public class Common {
 	{
 		try
 		{
-			element = driver.findElement(By.xpath(".//*[@class='blockUI']"));
+			element = driver.findElement(By.xpath("//DIV[@class='blockUI blockOverlay']"));
 			System.out.println("Loader Image on page");
 		}
 		catch(Exception e)

@@ -1,5 +1,9 @@
+@current
+
 Feature: Hotel Search from Home Page
 	I want to test hotel search for a location
+
+#This needs to be updated as Search has been removed from Home Page
 
 @tag1
 Scenario: Home Page Search for Hotel using Address 

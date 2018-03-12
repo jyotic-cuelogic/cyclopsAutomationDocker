@@ -1,3 +1,4 @@
+@current
 Feature: Update search criteria on Search Results Page
 	I want to test the search results page functionality like refine search, sort & filter
 

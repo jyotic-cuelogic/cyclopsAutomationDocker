@@ -1,4 +1,4 @@
-@tag
+@current
 Feature: Checkout Page
 	I want test the checkout page form and navigate to Payments page
 
