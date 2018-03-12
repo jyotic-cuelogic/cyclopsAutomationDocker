@@ -208,6 +208,7 @@ public class SearchResultsPage {
 	@When("^User clicks on the Distance Sort Tab for the first time$")
 	public void clickOnDistanceSortFirstTime() throws Exception
 	{
+		wait.until(ExpectedConditions.invisibilityOf(common.img_loader(driver)));
 		   search.tab_sortDistance(driver).click();
 		   System.out.println("Distance Sort clicked on first time");
 	}
@@ -215,6 +216,7 @@ public class SearchResultsPage {
 	@Then("^the hotels should get arranged in ascending order of their distance$")
 	public void validateAscendingDistanceSort() throws Exception
 	{
+		
 		wait.until(ExpectedConditions.invisibilityOf(common.img_loader(driver)));
 		if((driver.getCurrentUrl().contains("sort_by=distance")) && (!driver.getCurrentUrl().contains("sort_by=distance_reverse")))
 		{

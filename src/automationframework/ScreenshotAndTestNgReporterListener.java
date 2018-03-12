@@ -1,21 +1,18 @@
-/*package automationframework;
-*//**
- * @author Shubham Jain
- *
- *//*
-//import mailReport.ReportFailListener;
+package automationframework;
 
-import org.apache.commons.io.FileUtils;
+
+ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
-import org.testng.ITestResult;
-import org.testng.Reporter;
-import org.testng.TestListenerAdapter;
+ /*import org.testng.ITestResult;
+ import org.testng.Reporter;
+ import org.testng.TestListenerAdapter;*/
 
-import cucumber.api.Scenario;
-import pageobjects.Page;
+
+import pageObjects.Page;
+ import cucumber.api.Scenario;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -118,12 +115,12 @@ public class ScreenshotAndTestNgReporterListener {
 //        Reporter.log("<a href=\"" + snapfile + "\"><p align=\"left\">Add New PR screenshot at " + lastValue + "</p>");
        
                 // If required all folders in snap folder
-        for (String subDir : allfolders) {
+ /*       for (String subDir : allfolders) {
         	System.out.println(subDir);
             String snapfile="./Snap/"+subDir+"/";
             Reporter.log("<a href=\"" + snapfile + "\"><p align=\"left\">Add New PR screenshot at " + subDir + "</p>");
         }
-       
+       */
     }
     public static void customScreenshot(){
         try {
@@ -167,5 +164,6 @@ public class ScreenshotAndTestNgReporterListener {
                 ex.printStackTrace();
             }
     }
+
     
-}*/
+}

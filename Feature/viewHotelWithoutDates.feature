@@ -1,3 +1,4 @@
+@current
 Feature: View Hotel on Property without Dates page
 	I want to test the View Hotel functionality when Dates are not selected
 
@@ -7,12 +8,6 @@ And have navigated to the View Hotel without date page
 
 Scenario: Validating the Create DID feature on the View Property without Dates page
 Then I should be able to create DID number from Property without Dates page
-
-Scenario: Validate the functionality Save for Later on Property without Dates page
-When click on the Call Disposition Slider
-Then I should be able to see the Save for Later Email and SMS section
-And I should be able to send the email for Save for Later hotel
-And I should be able to send the SMS for save for Later hotel
 
 Scenario: Validate the Group Booking Form's functionality on Property without Dates page
 When I click on the Group Booking Form in the footer on Property without Dates page
@@ -28,3 +23,9 @@ Scenario: Validate the checkin & checkout dates selection functionality on Prope
 When I select the checkin and checkout dates from the Property without Dates page
 And I click on the Search button on the Property without Dates page
 Then I should be taken to the Property with Dates page or Unavailability page
+
+Scenario: Validate the functionality Save for Later on Property without Dates page
+When click on the Call Disposition Slider
+Then I should be able to see the Save for Later Email and SMS section
+And I should be able to send the email for Save for Later hotel
+And I should be able to send the SMS for save for Later hotel

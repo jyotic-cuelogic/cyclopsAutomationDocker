@@ -1,4 +1,4 @@
-@smoke
+@current
 Feature: Verify Payment Page
 	I want to test the Payment and Booking in Cyclops
 
