@@ -15,31 +15,14 @@ public class homePage{
 	
 	
 	
-	//used
-	public static Select drp_country(WebDriver d1) throws Exception
-	{
-		try
-		{
-			//select[@id='country-address-search']
-			element = d1.findElement(By.id("country-address-search"));
-			select = new Select(element);
-			System.out.println("Address - Country dropdown found");
-		}
-		catch(Exception e)
-		{
-			System.out.println("Address - Country dropdown not found");
-			throw e;
-		}
-		return select;
-	}
 	
-		
-	//used
 	public static WebElement txt_address(WebDriver d1) throws Exception
 	{
 		try
 		{
-			element = d1.findElement(By.id("address"));
+			//element = d1.findElement(By.id("address"));
+			element = d1.findElement(By.id("pac-input"));
+		
 			System.out.println("Address textfield found");
 		}
 		catch(Exception e)
@@ -48,64 +31,31 @@ public class homePage{
 			throw e;
 		}
 		return element;
-	}
-	
-	//used
-	public static WebElement txt_city(WebDriver d1) throws Exception
-	{
-		try
-		{
-			System.out.println("It has come here");
-			element = d1.findElement(By.id("city-address-search"));
-			System.out.println("Address - City textfield found");
-		}
-		catch(Exception e)
-		{
-			System.out.println("Address - City textfield not found");
-			throw e;
-		}
-		return element;
-	}
-	
 		
-	//used
-	public static Select drp_state(WebDriver d1) throws Exception
+		}
+	
+	
+	public static WebElement checkIn_checkOut(WebDriver d1) throws Exception
 	{
 		try
 		{
-			//select[@id='state_province-address-search']
-			element = d1.findElement(By.id("state_province-address-search"));
-			select = new Select(element);
-//			System.out.println("Address - State dropdown found");
+			element = d1.findElement(By.name("check_in_date"));
+			element.click();
+			
+			System.out.println("checkin text found");
+			
 		}
 		catch(Exception e)
 		{
-			System.out.println("Address - State dropdown not found");
-			throw e;
-		}
-		return select;
-	}
-	
-	
-	//used
-	public static WebElement txt_zip(WebDriver d1) throws Exception
-	{
-		try
-		{
-			//input[@id='postal_code-address-search']
-			element = d1.findElement(By.id("postal_code-address-search"));
-			System.out.println("Address - Postal Code textfield found");
-		}
-		catch(Exception e)
-		{
-			System.out.println("Address - Postal Code textfield not found");
+			System.out.println("checkIn_checkOut failed");
 			throw e;
 		}
 		return element;
-	}
 	
-	//used
-	public static WebElement btn_SearchHotels(WebDriver d1) throws Exception
+	
+	
+	/*
+      public static WebElement btn_SearchHotels(WebDriver d1) throws Exception
 	{
 		try
 		{
@@ -118,14 +68,16 @@ public class homePage{
 			throw e;
 		}
 		return element;
+		
+		
 	}
 	
-	
+
 	public static WebElement tab_city(WebDriver d1) throws Exception
 	{
 		try
 		{
-			element = d1.findElement(By.id("city-form"));
+			element = d1.findElement(By.name("check_in_date"));
 			System.out.println("City form tab found");
 		}
 		catch(Exception e)
@@ -134,9 +86,9 @@ public class homePage{
 			throw e;
 		}
 		return element;
-	}
+	}*/
 	
-	
+	/*
 	public static Select drpdwn_cityState(WebDriver d1) throws Exception
 	{
 		try
@@ -172,4 +124,84 @@ public class homePage{
 	
 	
 	
-}
+		//used
+	public static WebElement txt_zip(WebDriver d1) throws Exception
+	{
+		try
+		{
+			//input[@id='postal_code-address-search']
+			element = d1.findElement(By.id("postal_code-address-search"));
+			System.out.println("Address - Postal Code textfield found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Address - Postal Code textfield not found");
+			throw e;
+		}
+		return element;
+	}
+	
+	
+	
+		public static Select drp_country(WebDriver d1) throws Exception
+	{
+		try
+		{
+			//select[@id='country-address-search']
+			element = d1.findElement(By.id("country-address-search"));
+			select = new Select(element);
+			System.out.println("Address - Country dropdown found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Address - Country dropdown not found");
+			throw e;
+		}
+		return select;
+	}
+	
+	
+	
+	
+	//used
+	public static WebElement txt_city(WebDriver d1) throws Exception
+	{
+		try
+		{
+			System.out.println("It has come here");
+			element = d1.findElement(By.id("city-address-search"));
+			System.out.println("Address - City textfield found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Address - City textfield not found");
+			throw e;
+		}
+		return element;
+	}
+	
+	
+	
+			
+	//used
+	public static Select drp_state(WebDriver d1) throws Exception
+	{
+		try
+		{
+			//select[@id='state_province-address-search']
+			element = d1.findElement(By.id("state_province-address-search"));
+			select = new Select(element);
+//			System.out.println("Address - State dropdown found");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Address - State dropdown not found");
+			throw e;
+		}
+		return select;
+	}
+	
+	*/
+	
+	
+}}

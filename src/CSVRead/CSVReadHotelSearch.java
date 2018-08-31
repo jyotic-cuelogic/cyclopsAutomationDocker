@@ -35,17 +35,20 @@ public class CSVReadHotelSearch {
   {   
 	  	System.out.println("Its in CSVRead");
 	   String address = csvCell[0];
-	   String city = csvCell[1];
-	   String stateCode = csvCell[2];
-	   String postalCode = csvCell[3];
+	   String checkin = csvCell[1];
+	   String checkout = csvCell[2];
+	   homePage.txt_address(driver).click();
 	   homePage.txt_address(driver).sendKeys(address);
+	   
 	   System.out.println(address);
-	   System.out.println("next is city text field");
-	   homePage.txt_city(driver).sendKeys(city);
-	   homePage.drp_state(driver).selectByValue(stateCode);
+	   System.out.println("next is checkin and checkout field");
+	    homePage.checkIn_checkOut(driver).sendKeys(checkin);
+	    homePage.checkIn_checkOut(driver).sendKeys(checkout);
+	
+	  // homePage.drp_state(driver).selectByValue(stateCode);
 //	   homePage.txt_zip(driver).sendKeys(postalCode);
-	   System.out.println(city);
-	   System.out.println(stateCode);
+	 //  System.out.println(city);
+	 //  System.out.println(stateCode);
 //	   System.out.println(postalCode);
 	   
  }

@@ -60,18 +60,25 @@ public class homeAddressSearch {
 	}
 
 	@When("^I enter the Search criteria$")
-	public void fillAddress() throws Exception
+	public void homePageSearchDetails() throws Exception
+	//public void fillAddress() throws Exception
 	{
 		try
 		{
-			homePage.drp_country(driver).selectByVisibleText("United States");
+			
+			
+		
 			CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
 			csvRead.csvDataRead(driver);
-			System.out.println("Address entered");
+			
+			
+			
+			System.out.println("Address and checkin and checkout entered");
+			
 		}
 		catch(Exception e)
 		{
-			System.out.println("Address not entered");
+			System.out.println("Address and checkin and checkout not entered");
 			throw e;
 		}
 	}
@@ -93,7 +100,7 @@ public class homeAddressSearch {
 		}
 	}
 	
-	
+	/*
 	@When("^I enter city's search criteria$")
 	public void searchFromCityTab() throws Exception
 	{
@@ -113,7 +120,7 @@ public class homeAddressSearch {
 			throw e;
 		}
 	}
-	
+	*/
 
 	@Then("^I should navigate to the Search Results Page$")
 	public void cyclopsSearchResults() throws Exception

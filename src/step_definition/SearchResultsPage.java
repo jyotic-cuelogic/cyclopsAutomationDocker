@@ -166,7 +166,10 @@ public class SearchResultsPage {
 		}
 		else
 		{
-			System.out.println("Edit Date, Currency & Room tab is not displayed");
+			System.out.println("Edit Date, Currency & Room tab is not display"
+					+ ""
+					+ ""
+					+ "ed");
 		}
 	}
 
