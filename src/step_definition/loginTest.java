@@ -1,11 +1,11 @@
 package step_definition;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.concurrent.TimeUnit;
+//import java.io.BufferedWriter;
+//import java.io.File;
+//import java.io.FileOutputStream;
+//import java.io.OutputStreamWriter;
+//import java.io.Writer;
+//import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,7 +21,7 @@ public class loginTest {
 		
 	static driverInitialize d = new driverInitialize();
 	static WebDriver driver = d.driverInit();
-	settings seturl = new settings();
+	//settings seturl = new settings();
 	WebDriverWait wait = new WebDriverWait(driver, 60);
 
 	@Given("^I have the permission to Cyclops as an Agent through Phalanx$")
@@ -29,7 +29,7 @@ public class loginTest {
 	{
 		try
 		{
-			String url = seturl.cyclops_url();
+			String url = settings.cyclops_url();
 			driver.get(url);
 		}
 		catch (Exception e)

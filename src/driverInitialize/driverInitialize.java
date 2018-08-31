@@ -38,7 +38,7 @@ public class driverInitialize {
 		caps.setCapability("applicationCacheEnabled", true);
 		caps.setCapability("acceptSslCerts",true);
 		caps.setCapability("disable-popup-blocking", true);
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\sandra\\Documents\\Eclipse\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "D:\\ChromeDriver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver(caps);			
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
