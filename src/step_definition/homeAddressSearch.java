@@ -1,4 +1,4 @@
-/*package step_definition;
+package step_definition;
 
 import java.awt.List;
 
@@ -21,9 +21,9 @@ import driverInitialize.driverInitialize;
 
 public class homeAddressSearch {
 
-	static driverInitialize d = new driverInitialize();
-	static WebDriver driver = d.driverInit();
-	cyclopsLogin cycLogin = new cyclopsLogin();
+	//static driverInitialize d = new driverInitialize();
+	//static WebDriver driver = d.driverInit();
+	//cyclopsLogin cycLogin = new cyclopsLogin();
 	
 	
 	@Given("^I am logged in to Cyclops$")
@@ -138,4 +138,3 @@ public class homeAddressSearch {
 		}
 	}	
 }
-*/

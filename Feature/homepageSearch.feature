@@ -1,4 +1,4 @@
-@current
+@homepage
 Feature: Hotel Search from Home Page
 	I want to test hotel search for a location
 
