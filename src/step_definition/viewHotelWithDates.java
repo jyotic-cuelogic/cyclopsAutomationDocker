@@ -1,4 +1,4 @@
-package step_definition;
+/*package step_definition;
 
 import org.openqa.selenium.WebDriver;
 
@@ -38,3 +38,4 @@ public class viewHotelWithDates
 		
 	}
 }
+*/

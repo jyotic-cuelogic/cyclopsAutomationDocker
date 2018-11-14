@@ -5,14 +5,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.settings;
 
-public class cyclopsLogin {
+public class cyclopsLogin extends Page {
 	
+	public cyclopsLogin(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	static String home_url;
 	static String results_url;
 	
 	
 	
-	public WebDriver loginSetup(WebDriver driver) throws Exception
+/*	public WebDriver loginSetup(WebDriver driver) throws Exception
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		try
@@ -50,7 +57,7 @@ public class cyclopsLogin {
 			throw e;
 		}
 		return driver;
-	}
+	}*/
 	
 	/*public WebDriver searchResultsSetup(WebDriver driver) throws Exception
 	{

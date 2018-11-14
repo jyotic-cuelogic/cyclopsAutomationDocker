@@ -22,7 +22,7 @@ public abstract class AutomationTestCaseVerification extends AutomationTestCase
         super.invoke();
     }
         
-    public void setup()
+    public  void setup()
     {
         super.setup();
     }

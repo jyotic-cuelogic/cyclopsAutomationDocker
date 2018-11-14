@@ -1,4 +1,4 @@
-package CommonFunctions;
+/*package CommonFunctions;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -54,3 +54,4 @@ public class ResultsPageSetup {
 	}
 	
 }
+*/

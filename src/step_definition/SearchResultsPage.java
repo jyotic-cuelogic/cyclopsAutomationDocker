@@ -1,4 +1,4 @@
-package step_definition;
+/*package step_definition;
 
 import java.awt.RenderingHints.Key;
 import java.sql.Array;
@@ -377,7 +377,7 @@ public class SearchResultsPage {
 				
 	}
 
-/*	@Then("^I should be able to click on the map's icon for the first hotel for which the gmap's url should get generated$")
+	@Then("^I should be able to click on the map's icon for the first hotel for which the gmap's url should get generated$")
 	public void clickHotelMaps() throws Exception
 	{
 		Thread.sleep(3000);
@@ -405,9 +405,9 @@ public class SearchResultsPage {
 			}
 			break;
 		}
-	}*/
+	}
 
-	/*@Then("^I should be able to click on the amenities icon for the first hotel and view the list of amenities for that hotel$")
+	@Then("^I should be able to click on the amenities icon for the first hotel and view the list of amenities for that hotel$")
 	public void verifyAmenitiesIconSearchResults() throws Exception
 	{
 		try
@@ -429,6 +429,7 @@ public class SearchResultsPage {
 			System.out.println("verifyAmenitiesIconSearchResults failed");
 			throw e;
 		}
-	}*/
+	}
 	
 }
+*/

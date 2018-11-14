@@ -66,7 +66,9 @@ public class Configuration
 
     public static String applicationUnderTestURL()
     {
-    	return "http://" + Configuration.getConfigurationValueForProperty("applicationURL");
+    	return Configuration.getConfigurationValueForProperty("applicationURL");
+    	
+    	//return "https://" + Configuration.getConfigurationValueForProperty("applicationURL");
     }
     
     public static String RemoteURLIPAndPort()

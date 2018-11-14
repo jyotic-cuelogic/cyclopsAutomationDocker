@@ -1,0 +1,4 @@
+14/11/2018 06:00:50.886 - [Cyclops] - [INFO] - java.util.logging.ConsoleHandler@49f5c307
+14/11/2018 06:00:50.887 - [Cyclops] - [INFO] - [ TestDataProvider : parseTestData ] Not able to read config file due to java.io.FileNotFoundException: src\com\automation\testdata\loginTest.csv (The system cannot find the file specified) test data loading failed.
+14/11/2018 06:00:57.624 - [Cyclops] - [INFO] - [ AutomationTestCase : cleanup ] End Test case : loginTest
+

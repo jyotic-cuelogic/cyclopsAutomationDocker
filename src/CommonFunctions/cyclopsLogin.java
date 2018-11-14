@@ -16,19 +16,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.Common;
+import pageObjects.Page;
 import pageObjects.callDisposition;
 import driverInitialize.driverInitialize;
 import CSVRead.CSVReadHotelSearch;
 import Utilities.settings;
 
-public class cyclopsLogin {
+public class cyclopsLogin extends Page{
 	
+	public cyclopsLogin(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	static String home_url;
 	static String results_url;
 	settings seturl = new settings();
 	Common common = new Common();
 		
-	public WebDriver loginSetup(WebDriver driver) throws Exception
+/*	public WebDriver loginSetup(WebDriver driver) throws Exception
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		try
@@ -65,7 +72,7 @@ public class cyclopsLogin {
 		return driver;
 	}
 	
-
+*/
 	/*public WebDriver checkOutPageSetup(WebDriver driver) throws Exception
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 80);

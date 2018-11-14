@@ -1,4 +1,4 @@
-package step_definition;
+/*package step_definition;
 
 import java.awt.List;
 
@@ -100,7 +100,7 @@ public class homeAddressSearch {
 		}
 	}
 	
-	/*
+	
 	@When("^I enter city's search criteria$")
 	public void searchFromCityTab() throws Exception
 	{
@@ -120,7 +120,7 @@ public class homeAddressSearch {
 			throw e;
 		}
 	}
-	*/
+	
 
 	@Then("^I should navigate to the Search Results Page$")
 	public void cyclopsSearchResults() throws Exception
@@ -138,3 +138,4 @@ public class homeAddressSearch {
 		}
 	}	
 }
+*/

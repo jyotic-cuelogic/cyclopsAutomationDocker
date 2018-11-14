@@ -70,10 +70,10 @@ public class AutomationTestCase
     
     public void setup() 
     {
-        AutomationLog.startTestCase(executingTestCaseName);
+        //AutomationLog.startTestCase(executingTestCaseName);
         String browserToUse = Configuration.getConfigurationValueForProperty("browser");
         new Page(AppDriver.getDriver(browserToUse));
-    	Credentials ValidCredentials = getGlobalUserCredentials();
+    	//Credentials ValidCredentials = getGlobalUserCredentials();
        /* try {
         	loginPage.doSuccessfulLogin(ValidCredentials.getEmail(), ValidCredentials.getPassword());
         	AutomationLog.startTestCase("Login done");

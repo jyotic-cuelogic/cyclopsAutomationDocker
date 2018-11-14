@@ -1,0 +1,64 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 5,
+        "name": "Cyclops\u0027 Login",
+        "description": "",
+        "id": "login-to-cyclops;cyclops\u0027-login",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 16629612375,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I have the permission to Cyclops as an Agent through Phalanx",
+            "match": {
+              "location": "loginTest.valid_agent_id()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 812202756,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I navigate to cyclops\u0027 login url",
+            "match": {
+              "location": "loginTest.login_url()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6949928345,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I should be able to view Cyclops\u0027 Home Page",
+            "match": {
+              "location": "loginTest.cyclops_home()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Login to Cyclops",
+    "description": "I want to test the login to Cyclops",
+    "id": "login-to-cyclops",
+    "keyword": "Feature",
+    "uri": "login.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@login"
+      }
+    ]
+  }
+]

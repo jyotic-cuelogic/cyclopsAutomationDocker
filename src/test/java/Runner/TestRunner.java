@@ -1,4 +1,15 @@
+
 package test.java.Runner;
+
+import org.junit.runner.RunWith;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+/*import org.junit.runner.RunWith;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
 
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
@@ -12,10 +23,10 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.junit.Cucumber;
-/*import net.masterthought.cucumber.Configuration;
+import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.ReportParser;
-import net.masterthought.cucumber.Reportable;*/
+import net.masterthought.cucumber.Reportable;
 
  
 //@RunWith(Cucumber.class)
@@ -32,8 +43,8 @@ import net.masterthought.cucumber.Reportable;*/
 		features = "Feature"
 		,glue={"step_definition"}
 		,plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json","junit:target/cucumber.xml"}
-//		,tags= {"@login"}  // Run tests in groups
-		,tags= {"@current"}
+		,tags= {"@login"}  // Run tests in groups
+	//	,tags= {"@current"}
 //		,monochrome = false
 //		,dryRun = true
 		)
@@ -50,6 +61,28 @@ public class TestRunner {
         AppDriver.clearBrowserContext(Page.driver);
         AutomationLog.info("Quiting Webdriver Instances");
    }     
+	
+	
 }
+
+
+*/
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		features = "Feature"
+		,glue={"step_definition"}
+		,plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json","junit:target/cucumber.xml"}
+		,tags= {"@login"}
+		)
+ 
+public class TestRunner {
+	public TestRunner() {
+		System.out.println("in test runner");
+	}
+}
+
+
 
 
