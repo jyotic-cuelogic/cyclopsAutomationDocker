@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.Common;
 import pageObjects.Page;
 import pageObjects.callDisposition;
+import pageObjects.homePage;
 import driverInitialize.driverInitialize;
 import CSVRead.CSVReadHotelSearch;
 import Utilities.settings;
@@ -29,23 +30,25 @@ public class cyclopsLogin extends Page {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
+	WebDriver driver;
 	static String home_url;
 	static String results_url;
 	settings seturl = new settings();
 	Common common = new Common();
 	
-	AutomationTestCase cyclops_login=new AutomationTestCase();
+	//AutomationTestCase cyclops_login=new AutomationTestCase();
 
-	public WebDriver loginSetup(WebDriver driver) throws Exception {
-		WebDriverWait wait = new WebDriverWait(driver, 60);
+	public homePage loginSetup() throws Exception {
+//		WebDriverWait wait = new WebDriverWait(driver, 60);
+			homePage home = null;
 		try {
 			//String url = seturl.cyclops_url();
 			//	driver.get(url);
 			
-			cyclops_login.setup();
+			//cyclops_login.setup();
 		
 			if (driver.getCurrentUrl().contains("home")) {
+				home = new homePage(driver);
 				System.out.println("Logged in & on home page without FCD");
 			} else {
 		
@@ -54,9 +57,9 @@ public class cyclopsLogin extends Page {
 				pageObjects.callDisposition.call_dispose_slider().selectByValue("6");
 				
 				pageObjects.callDisposition.apply_button().click();
-				
+				home = new homePage(driver);
 				System.out.println("FCD value set");
-				wait.until(ExpectedConditions.titleContains("Home"));
+			//	wait.until(ExpectedConditions.titleContains("Home"));
 				if (driver.getTitle().equals("Cyclops - Home")) {
 					home_url = driver.getCurrentUrl();
 					System.out.println("FCD Passed. Logged in & on home page with FCD");
@@ -69,7 +72,7 @@ public class cyclopsLogin extends Page {
 			System.out.println("loginSetup() failed");
 			throw e;
 		}
-		return driver;
+		return home;
 	}
 
 	/*public WebDriver checkOutPageSetup(WebDriver driver) throws Exception {

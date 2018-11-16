@@ -5,11 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class homePage{
-	public homePage(){
-		
-	}
+public class homePage extends Page{
 	
+	
+	public homePage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	private static WebElement element = null;
 	private static Select select = null;
 	

@@ -1,6 +1,7 @@
 package step_definition;
 
 import java.awt.List;
+import java.util.HashMap;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -13,24 +14,36 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import CSVRead.CSVReadHotelSearch;
 import CommonFunctions.cyclopsLogin;
+import automationframework.AutomationTestCaseVerification;
+import automationframework.ExcelLib;
+import automationframework.TestDataProvider;
 import pageObjects.homePage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import driverInitialize.driverInitialize;
 
-public class homeAddressSearch {
+public class homeAddressSearch extends AutomationTestCaseVerification {
 
-	//static driverInitialize d = new driverInitialize();
-	//static WebDriver driver = d.driverInit();
-	//cyclopsLogin cycLogin = new cyclopsLogin();
+	WebDriver driver;
+	cyclopsLogin cycLogin = new cyclopsLogin(driver);
+	homePage home = null;
 	
+	ExcelLib lib=new ExcelLib();
 	
+	HashMap<String, String> homwtestdata = null;
+	
+
+
 	@Given("^I am logged in to Cyclops$")
 	public void cyclops_login() throws Exception {
 		try
 		{
-			driver = cycLogin.loginSetup(driver);
+			super.setup();
+			homwtestdata = testCaseData.get("RowKey");
+			home = cycLogin.loginSetup();
+			
+			
 			System.out.println("Login to Cyclops Successful");
 		}
 		catch (Exception e)
@@ -66,10 +79,10 @@ public class homeAddressSearch {
 		try
 		{
 			
-			
+			String teststring = homwtestdata.get("key1");
 		
-			CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
-			csvRead.csvDataRead(driver);
+			//CSVReadHotelSearch csvRead = new CSVReadHotelSearch();
+		//	csvRead.csvDataRead(driver);
 			
 			
 			
@@ -100,7 +113,25 @@ public class homeAddressSearch {
 		}
 	}
 	
+	@Then("^I should navigate to the Search Results Page$")
+	public void cyclopsSearchResults() throws Exception
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		try
+		{
+			wait.until(ExpectedConditions.titleContains("Search"));
+			System.out.println(driver.getTitle());
+			Assert.assertTrue(driver.getTitle().equals("Cyclops - Search"));
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+	}	
+}
+
 	
+	/*
 	@When("^I enter city's search criteria$")
 	public void searchFromCityTab() throws Exception
 	{
@@ -122,19 +153,6 @@ public class homeAddressSearch {
 	}
 	
 
-	@Then("^I should navigate to the Search Results Page$")
-	public void cyclopsSearchResults() throws Exception
-	{
-		WebDriverWait wait = new WebDriverWait(driver, 60);
-		try
-		{
-			wait.until(ExpectedConditions.titleContains("Search"));
-			System.out.println(driver.getTitle());
-			Assert.assertTrue(driver.getTitle().equals("Cyclops - Search"));
-		}
-		catch(Exception e)
-		{
-			throw e;
-		}
-	}	
-}
+*/	
+	
+	
