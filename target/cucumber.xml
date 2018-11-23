@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="24.391743">
-<testcase classname="Login to Cyclops" name="Cyclops' Login" time="24.391743">
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="33.653803">
+<testcase classname="Login to Cyclops" name="Cyclops' Login" time="33.653803">
 <system-out><![CDATA[Given I have the permission to Cyclops as an Agent through Phalanx..........passed
 When I navigate to cyclops' login url.......................................passed
 Then I should be able to view Cyclops' Home Page............................passed

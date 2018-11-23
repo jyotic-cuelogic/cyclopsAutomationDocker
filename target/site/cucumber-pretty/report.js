@@ -39,21 +39,21 @@ formatter.match({
   "location": "loginTest.valid_agent_id()"
 });
 formatter.result({
-  "duration": 16629612375,
+  "duration": 26589815720,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.login_url()"
 });
 formatter.result({
-  "duration": 812202756,
+  "duration": 783094745,
   "status": "passed"
 });
 formatter.match({
   "location": "loginTest.cyclops_home()"
 });
 formatter.result({
-  "duration": 6949928345,
+  "duration": 6280892663,
   "status": "passed"
 });
 });

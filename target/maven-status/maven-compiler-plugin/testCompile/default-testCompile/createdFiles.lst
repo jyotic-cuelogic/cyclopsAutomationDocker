@@ -1,0 +1,6 @@
+test\java\Runner\AfterSuite.class
+test\java\Runner\TestRunner.class
+test\java\Runner\CucumberOptions.class
+test\java\Runner\ExtendedCucumberOptions.class
+test\java\Runner\BeforeSuite.class
+test\java\Runner\ExtendedCucumberRunner.class

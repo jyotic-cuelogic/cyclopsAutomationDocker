@@ -103,7 +103,7 @@ public class homeAddressSearch extends AutomationTestCaseVerification {
 			
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("document.getElementById('fusion-sidebar').scrollTop += 200");
-			homePage.btn_SearchHotels(driver).sendKeys(Keys.ENTER);
+	//		homePage.btn_SearchHotels(driver).sendKeys(Keys.ENTER);
 			System.out.println("Search Hotels button clicked");
 		}
 		catch (Exception e)
